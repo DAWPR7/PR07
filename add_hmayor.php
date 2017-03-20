@@ -17,7 +17,7 @@
 		 		<tr>
 		 		<tr>
 		 			<td>Notas</td>
-		 			<td><textarea rows="4" name="notes" id="notes" >Anotaciones sobre el hermano mayor</textarea></td>
+		 			<td><textarea rows="4" name="notes" id="notes">Anotaciones sobre el hermano mayor</textarea></td>
 		 		</tr>
 
 		 		<tr>
