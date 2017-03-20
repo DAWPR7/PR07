@@ -1,4 +1,4 @@
 <!-- Footer -->
 <footer id="footer">
-<p class="copyright">&copy;Jesuitas Joan XXIII 2017</p>
-</footer> 
+<p class="copyright">&copy;Jesuites Bellvitge, 2017.</p>
+</footer>
