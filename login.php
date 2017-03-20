@@ -10,9 +10,7 @@
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>	
 </head>
 <body>
-<div class="pen-title">
-  <h1>Hermano Mayor</h1>
-</div>
+  <h1 class="pen-title">Hermano Mayor</h1>
 
 
 	<div class="module form-module">

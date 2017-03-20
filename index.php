@@ -36,7 +36,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Inicio</a></li>
-            <li><a href="#">Informa de un problema</a></li>
+            <li><a href="#about">Informa de un problema</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
