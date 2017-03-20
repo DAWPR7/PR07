@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2017 a las 16:50:50
+-- Tiempo de generación: 20-03-2017 a las 17:09:41
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.5.37
 
@@ -28,11 +28,9 @@ USE `bd_hermanomayor`;
 -- Estructura de tabla para la tabla `tbl_admin`
 --
 
-DROP TABLE IF EXISTS `tbl_admin`;
-CREATE TABLE IF NOT EXISTS `tbl_admin` (
-  `adm_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`adm_id`)
+CREATE TABLE `tbl_admin` (
+  `adm_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -41,16 +39,14 @@ CREATE TABLE IF NOT EXISTS `tbl_admin` (
 -- Estructura de tabla para la tabla `tbl_alumno`
 --
 
-DROP TABLE IF EXISTS `tbl_alumno`;
-CREATE TABLE IF NOT EXISTS `tbl_alumno` (
-  `alu_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_alumno` (
+  `alu_id` int(11) NOT NULL,
   `alu_matricula` int(11) NOT NULL,
   `alu_nombre` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `alu_apellidos` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `alu_etapa` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `alu_curso` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
-  `for_id` int(11) NOT NULL,
-  PRIMARY KEY (`alu_id`)
+  `for_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -59,8 +55,7 @@ CREATE TABLE IF NOT EXISTS `tbl_alumno` (
 -- Estructura de tabla para la tabla `tbl_denuncia`
 --
 
-DROP TABLE IF EXISTS `tbl_denuncia`;
-CREATE TABLE IF NOT EXISTS `tbl_denuncia` (
+CREATE TABLE `tbl_denuncia` (
   `den_id` int(11) NOT NULL,
   `den_mensaje` text COLLATE utf8_unicode_ci NOT NULL,
   `den_tipo` varchar(20) COLLATE utf8_unicode_ci NOT NULL
@@ -72,14 +67,12 @@ CREATE TABLE IF NOT EXISTS `tbl_denuncia` (
 -- Estructura de tabla para la tabla `tbl_dialogo`
 --
 
-DROP TABLE IF EXISTS `tbl_dialogo`;
-CREATE TABLE IF NOT EXISTS `tbl_dialogo` (
-  `dia_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_dialogo` (
+  `dia_id` int(11) NOT NULL,
   `dia_mensaje` text COLLATE utf8_unicode_ci NOT NULL,
   `hme_id` int(11) NOT NULL,
   `hma_id` int(11) NOT NULL,
-  `dia_data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`dia_id`)
+  `dia_data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -88,9 +81,8 @@ CREATE TABLE IF NOT EXISTS `tbl_dialogo` (
 -- Estructura de tabla para la tabla `tbl_formulario`
 --
 
-DROP TABLE IF EXISTS `tbl_formulario`;
-CREATE TABLE IF NOT EXISTS `tbl_formulario` (
-  `for_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_formulario` (
+  `for_id` int(11) NOT NULL,
   `for_etapa` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `for_curso` int(2) NOT NULL,
   `for_pre1` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
@@ -104,8 +96,7 @@ CREATE TABLE IF NOT EXISTS `tbl_formulario` (
   `for_pre9` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `for_pre10` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `for_pre11` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre12` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`for_id`)
+  `for_pre12` varchar(40) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -114,13 +105,11 @@ CREATE TABLE IF NOT EXISTS `tbl_formulario` (
 -- Estructura de tabla para la tabla `tbl_historial`
 --
 
-DROP TABLE IF EXISTS `tbl_historial`;
-CREATE TABLE IF NOT EXISTS `tbl_historial` (
-  `his_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_historial` (
+  `his_id` int(11) NOT NULL,
   `hma_id` int(11) NOT NULL,
   `hme_id` int(11) NOT NULL,
-  `his_data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`his_id`)
+  `his_data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -129,11 +118,10 @@ CREATE TABLE IF NOT EXISTS `tbl_historial` (
 -- Estructura de tabla para la tabla `tbl_hmayor`
 --
 
-DROP TABLE IF EXISTS `tbl_hmayor`;
-CREATE TABLE IF NOT EXISTS `tbl_hmayor` (
-  `hma_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_hmayor` (
+  `hma_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`hma_id`)
+  `hma_notas` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -142,11 +130,10 @@ CREATE TABLE IF NOT EXISTS `tbl_hmayor` (
 -- Estructura de tabla para la tabla `tbl_hmenor`
 --
 
-DROP TABLE IF EXISTS `tbl_hmenor`;
-CREATE TABLE IF NOT EXISTS `tbl_hmenor` (
-  `hme_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_hmenor` (
+  `hme_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`hme_id`)
+  `hme_notas` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -155,11 +142,9 @@ CREATE TABLE IF NOT EXISTS `tbl_hmenor` (
 -- Estructura de tabla para la tabla `tbl_psico`
 --
 
-DROP TABLE IF EXISTS `tbl_psico`;
-CREATE TABLE IF NOT EXISTS `tbl_psico` (
-  `psi_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`psi_id`)
+CREATE TABLE `tbl_psico` (
+  `psi_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -168,14 +153,12 @@ CREATE TABLE IF NOT EXISTS `tbl_psico` (
 -- Estructura de tabla para la tabla `tbl_resultado`
 --
 
-DROP TABLE IF EXISTS `tbl_resultado`;
-CREATE TABLE IF NOT EXISTS `tbl_resultado` (
-  `res_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_resultado` (
+  `res_id` int(11) NOT NULL,
   `alu_id` int(11) NOT NULL,
   `res_verbal` int(11) NOT NULL,
   `res_fisico` int(11) NOT NULL,
-  `res_relacional` int(11) NOT NULL,
-  PRIMARY KEY (`res_id`)
+  `res_relacional` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -184,14 +167,130 @@ CREATE TABLE IF NOT EXISTS `tbl_resultado` (
 -- Estructura de tabla para la tabla `tbl_user`
 --
 
-DROP TABLE IF EXISTS `tbl_user`;
-CREATE TABLE IF NOT EXISTS `tbl_user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_user` (
+  `user_id` int(11) NOT NULL,
   `user_matricula` int(10) NOT NULL,
-  `user_pwd` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`user_id`)
+  `user_pwd` varchar(16) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  ADD PRIMARY KEY (`adm_id`);
+
+--
+-- Indices de la tabla `tbl_alumno`
+--
+ALTER TABLE `tbl_alumno`
+  ADD PRIMARY KEY (`alu_id`);
+
+--
+-- Indices de la tabla `tbl_dialogo`
+--
+ALTER TABLE `tbl_dialogo`
+  ADD PRIMARY KEY (`dia_id`);
+
+--
+-- Indices de la tabla `tbl_formulario`
+--
+ALTER TABLE `tbl_formulario`
+  ADD PRIMARY KEY (`for_id`);
+
+--
+-- Indices de la tabla `tbl_historial`
+--
+ALTER TABLE `tbl_historial`
+  ADD PRIMARY KEY (`his_id`);
+
+--
+-- Indices de la tabla `tbl_hmayor`
+--
+ALTER TABLE `tbl_hmayor`
+  ADD PRIMARY KEY (`hma_id`);
+
+--
+-- Indices de la tabla `tbl_hmenor`
+--
+ALTER TABLE `tbl_hmenor`
+  ADD PRIMARY KEY (`hme_id`);
+
+--
+-- Indices de la tabla `tbl_psico`
+--
+ALTER TABLE `tbl_psico`
+  ADD PRIMARY KEY (`psi_id`);
+
+--
+-- Indices de la tabla `tbl_resultado`
+--
+ALTER TABLE `tbl_resultado`
+  ADD PRIMARY KEY (`res_id`);
+
+--
+-- Indices de la tabla `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  MODIFY `adm_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_alumno`
+--
+ALTER TABLE `tbl_alumno`
+  MODIFY `alu_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_dialogo`
+--
+ALTER TABLE `tbl_dialogo`
+  MODIFY `dia_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_formulario`
+--
+ALTER TABLE `tbl_formulario`
+  MODIFY `for_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_historial`
+--
+ALTER TABLE `tbl_historial`
+  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_hmayor`
+--
+ALTER TABLE `tbl_hmayor`
+  MODIFY `hma_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_hmenor`
+--
+ALTER TABLE `tbl_hmenor`
+  MODIFY `hme_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_psico`
+--
+ALTER TABLE `tbl_psico`
+  MODIFY `psi_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_resultado`
+--
+ALTER TABLE `tbl_resultado`
+  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
