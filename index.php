@@ -1,43 +1,61 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Hermano Mayor</title>
-	<meta charset="utf-8"/>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-	<link rel="stylesheet" href="css/login.css" />
-	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>	
-</head>
-<body>
-<div class="pen-title">
-  <h1>Hermano Mayor</h1>
-</div>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Aplicación para detectar posibles casos de bullying y juntar alumnos mayores con alumnos menores.">
+    <meta name="author" content="Dani, Sergi, Musta y Miguel">
+    <link rel="icon" href="assets/img/favicon.png">
+
+    <title>Hermano Mayor</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.php">Hermano Mayor</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Inicio</a></li>
+            <li><a href="#">Informa de un problema</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="base">
+        <h1>Bootstrap starter template</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+      </div>
+
+    </div><!-- /.container -->
 
 
-	<div class="module form-module">
-  	<div class="toggle"> </div>
-    
-	
-  <div class="form">
-    <h2>Accede a tu cuenta</h2>
-    
-    <form action="" method="POST">
-      <input id="usuario" name="usuario" type="email" placeholder="Email"/>
-      <input id="password" name="password" type="password" placeholder="Contraseña"/>
-      <button>Acceder</button>
-    </form>
-  </div>
-	</div>
-	
-
-
-
-<!-- Footer -->
-<?php
-include("footer.php");
-?>
-<script src="js/jquery-3.2.0.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-</body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </body>
 </html>
+
