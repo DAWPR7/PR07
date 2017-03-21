@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2017 a las 17:09:41
+-- Tiempo de generación: 21-03-2017 a las 17:05:52
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.5.37
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_hermanomayor`
 --
-CREATE DATABASE IF NOT EXISTS `bd_hermanomayor` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `bd_hermanomayor`;
 
 -- --------------------------------------------------------
 
@@ -45,8 +43,7 @@ CREATE TABLE `tbl_alumno` (
   `alu_nombre` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `alu_apellidos` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `alu_etapa` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `alu_curso` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
-  `for_id` int(11) NOT NULL
+  `alu_curso` varchar(4) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -70,33 +67,7 @@ CREATE TABLE `tbl_denuncia` (
 CREATE TABLE `tbl_dialogo` (
   `dia_id` int(11) NOT NULL,
   `dia_mensaje` text COLLATE utf8_unicode_ci NOT NULL,
-  `hme_id` int(11) NOT NULL,
-  `hma_id` int(11) NOT NULL,
-  `dia_data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_formulario`
---
-
-CREATE TABLE `tbl_formulario` (
-  `for_id` int(11) NOT NULL,
-  `for_etapa` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `for_curso` int(2) NOT NULL,
-  `for_pre1` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre2` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre3` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre4` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre5` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre6` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre7` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre8` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre9` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre10` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre11` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `for_pre12` varchar(40) COLLATE utf8_unicode_ci NOT NULL
+  `his_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -109,7 +80,9 @@ CREATE TABLE `tbl_historial` (
   `his_id` int(11) NOT NULL,
   `hma_id` int(11) NOT NULL,
   `hme_id` int(11) NOT NULL,
-  `his_data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `his_data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `his_comentario` text COLLATE utf8_unicode_ci NOT NULL,
+  `psi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -121,7 +94,8 @@ CREATE TABLE `tbl_historial` (
 CREATE TABLE `tbl_hmayor` (
   `hma_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `hma_notas` text COLLATE utf8_unicode_ci NOT NULL
+  `hma_notas` text COLLATE utf8_unicode_ci NOT NULL,
+  `hma_estado` enum('libre','ocupado','desactivado') COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -133,7 +107,8 @@ CREATE TABLE `tbl_hmayor` (
 CREATE TABLE `tbl_hmenor` (
   `hme_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `hme_notas` text COLLATE utf8_unicode_ci NOT NULL
+  `hme_notas` text COLLATE utf8_unicode_ci NOT NULL,
+  `hme_estado` enum('libre','ocupado','inactivo') COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -145,6 +120,20 @@ CREATE TABLE `tbl_hmenor` (
 CREATE TABLE `tbl_psico` (
   `psi_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_respuesta`
+--
+
+CREATE TABLE `tbl_respuesta` (
+  `res_id` int(11) NOT NULL,
+  `alu_id` int(11) NOT NULL,
+  `res_pregunta` int(2) NOT NULL,
+  `res_tipo` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `res_respuesta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -196,12 +185,6 @@ ALTER TABLE `tbl_dialogo`
   ADD PRIMARY KEY (`dia_id`);
 
 --
--- Indices de la tabla `tbl_formulario`
---
-ALTER TABLE `tbl_formulario`
-  ADD PRIMARY KEY (`for_id`);
-
---
 -- Indices de la tabla `tbl_historial`
 --
 ALTER TABLE `tbl_historial`
@@ -224,6 +207,12 @@ ALTER TABLE `tbl_hmenor`
 --
 ALTER TABLE `tbl_psico`
   ADD PRIMARY KEY (`psi_id`);
+
+--
+-- Indices de la tabla `tbl_respuesta`
+--
+ALTER TABLE `tbl_respuesta`
+  ADD PRIMARY KEY (`res_id`);
 
 --
 -- Indices de la tabla `tbl_resultado`
@@ -257,11 +246,6 @@ ALTER TABLE `tbl_alumno`
 ALTER TABLE `tbl_dialogo`
   MODIFY `dia_id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tbl_formulario`
---
-ALTER TABLE `tbl_formulario`
-  MODIFY `for_id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT de la tabla `tbl_historial`
 --
 ALTER TABLE `tbl_historial`
@@ -281,6 +265,11 @@ ALTER TABLE `tbl_hmenor`
 --
 ALTER TABLE `tbl_psico`
   MODIFY `psi_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_respuesta`
+--
+ALTER TABLE `tbl_respuesta`
+  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tbl_resultado`
 --
