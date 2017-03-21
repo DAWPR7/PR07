@@ -1,0 +1,12 @@
+body {
+    padding-top: 50px;
+}
+
+.base {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.navbar {
+	background-color: #272727 !important;
+}
