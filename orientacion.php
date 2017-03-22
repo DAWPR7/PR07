@@ -9,8 +9,12 @@
 			<td><a href="add_hmayor.php">Añadir hermano mayor</td>
 		</tr>
 		<tr>
-			<td><a href="#">Iniciar nueva terapia</td>
+			<td><a href="add_terapia.php">Iniciar nueva terapia</td>
 		</tr>
+		<tr>
+			<td><a href="sh_terapias.php">Ver terapias en curso</td>
+		</tr>
+		
 		<tr>
 			<td><a href="#">Seguimiento de casos</td>
 		</tr>

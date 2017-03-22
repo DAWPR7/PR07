@@ -1,6 +1,6 @@
 <?php 
 	extract($_GET);
-	require_once("conexion.proc.php");
+	require_once("includes/conexion.proc.php");
 	//Creamos una consulta para comprobar si existe un Hermano Mayor con esa matricula
 		$comprobacion = "SELECT * FROM `tbl_user` WHERE `user_matricula` = ".$hm_mat."; ";
 				//Hacemos la petición a la BD
@@ -11,7 +11,7 @@
 	if($total>=1)
 	{
 		echo "<script type='text/javascript'>alert('¡ERROR! el hermano mayor ".$hm_mat." ya existe');
-				location.href='../add_hmayor.php';</script>";
+				location.href='add_hmayor.php';</script>";
 	}
 	else //Si no dvuelve nada, significa que no existe y se puede insertar
 	{
@@ -29,18 +29,18 @@
 					if($resultado2)
 					{
 						echo "<script type='text/javascript'>alert('El hermano mayor ".$hm_mat." ha sido dado de alta con éxito');
-						location.href='../add_hmayor.php';</script>";
+						location.href='add_hmayor.php';</script>";
 					}
 					else
 					{
 						echo "<script type='text/javascript'>alert('¡Ups! Error inesperado, porfavor, vuelva a intentarlo');
-						location.href='../add_hmayor.php';</script>";
+						location.href='add_hmayor.php';</script>";
 					}//End else error insert2
 				}
 			else
 			{
 				echo "<script type='text/javascript'>alert('¡Ups! Error inesperado, porfavor, vuelva a intentarlo');
-				location.href='../add_hmayor.php';</script>";
+				location.href='add_hmayor.php';</script>";
 			}//End else error insert
 		
 	}//End Else existente
