@@ -1,60 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-
-    <meta charset="utf-8">
+<html>
+<head>
+	<title>Hermano Mayor</title>
+	<meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Aplicación para detectar posibles casos de bullying y juntar alumnos mayores con alumnos menores.">
-    <meta name="author" content="Dani, Sergi, Musta y Miguel">
-    <link rel="icon" href="assets/img/favicon.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/login.css" />
+	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>	
+</head>
+<body background="IMG/login.jpg">
 
-    <title>Hermano Mayor</title>
+<div class="container">
+<!--FALLO RESPONISVE!!!-->
+<div class="row" style="text-align: right;">
+  <div class="col-sm-offset-8" ><a href="denuncia_anonima.php"><img src="IMG/button_anonima.png" class="img-responsive img-rounded"></div></a>
+</div>
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-
-    <!-- CSS -->
-    <link href="assets/css/main.css" rel="stylesheet">
-
-  </head>
-
-  <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.php">Hermano Mayor</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Inicio</a></li>
-            <li><a href="#about">Informa de un problema</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-    <div class="container">
-
-      <div class="base">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
-
-    </div><!-- /.container -->
+    <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form action="login.proc.php" method="POST" class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+               
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar sesión</button>
+            </form><!-- /form -->
+            <!--<a href="#" class="forgot-password">
+                Forgot the password?
+            </a> -->
+        </div><!-- /card-container -->
+    </div><!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/jquery.min.js"><\/script>')</script>
-  </body>
+<!-- Footer -->
+<?php
+include("footer.php");
+?>
+<script src="assets/js/jquery-3.2.0.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/login.js"></script>
+</body>
 </html>
