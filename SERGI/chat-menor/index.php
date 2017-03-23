@@ -42,10 +42,10 @@ if(isset($_POST['enter'])){
 </head>
 
 <?php
-if(!isset($_SESSION['name'])){
-	loginForm();
-}
-else{
+if(isset($_SESSION['name'])){
+//	loginForm();
+//}
+// else{
 ?>
 <div id="wrapper">
 	<div id="menu">
@@ -105,6 +105,8 @@ $(document).ready(function(){
 });
 </script>
 <?php
+} else {
+	header("Location: index.php")
 }
 ?>
 </body>
