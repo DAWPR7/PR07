@@ -33,7 +33,7 @@
   <div class="jumbotron" style="background:transparent !important">
     <div class="container" style="background-color: white;">
 
-      <form method="post" id="formulario" role="form">
+      <form method="post" id="form1" role="form">
       <!-- <h3>BULLYIN PRIMER CICLE</h3> -->
       <hr>
       <div class="container">
@@ -71,6 +71,8 @@
         </div>
       </div>
       <hr>
+        <input type="hidden" name="form" value="1">
+      </form>
       <div class="row">
         <div class="col-md-12">
             <h3>Bullying</h3>
@@ -83,13 +85,14 @@
       </div>
       <hr>
       <br/>
+      <form method="post" id="form2" role="form1">
       <div class="row">
         <div class="form-group container">
           <label class="col-md-offset-2 col-md-12" for="formulario">
             Alumne/-na que pateix Bullying 
           </label>
           <div class="col-md-offset-2 col-md-3">
-            <select class="form-control" id="pre_7">
+            <select class="form-control" name="pre_7" id="pre_7">
               <option selected disabled>Compayns</option>
             </select>
           </div> 
@@ -155,12 +158,14 @@
 
       <br/>
       <br/>
-      
+        <input type="hidden" name="form" value="2">
+      </form>
+      <form method="post" id="form3" role="form1">
       <div class="row">
         <div class="form-group container">
           <label class="col-md-offset-2 col-md-12" for="formulario">Alumne/-na que pateix Bullying </label>
           <div class="col-md-offset-2 col-md-3">
-            <select class="form-control" id="pre_8">
+            <select class="form-control" name="pre_8" id="pre_8">
               <option selected disabled>Compayns</option>
             </select>
           </div> 
@@ -226,12 +231,14 @@
 
       <br/>
       <br/>
-
+        <input type="hidden" name="form" value="2">
+      </form>
+      <form method="post" id="form4" role="form2">
       <div class="row">
         <div class="form-group container">
           <label class="col-md-offset-2 col-md-12" for="formulario">Alumne/-na que pateix Bullying </label>
           <div class="col-md-offset-2 col-md-3">
-            <select class="form-control" id="pre_9">
+            <select class="form-control" name="pre_9" id="pre_9">
               <option selected disabled>Compayns</option>
             </select>
           </div> 
@@ -303,11 +310,7 @@
       </div>
 
       <br/>
-
-
-      
-
-
+        <input type="hidden" name="form" value="2">
       </form>
     </div>
   </div>

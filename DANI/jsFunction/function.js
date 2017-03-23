@@ -2,11 +2,42 @@ $(function(){
 
   //--- FUNCIÓN PARA MANDAR ENCUESTA:
           $("#btn_enviar").click(function(){
-            var url = "enquesta_insert.proc.php"; // El script a dónde se realizará la petición.
+
+          var a = $.get("id");
+          alert(a);
+            var url = "enquesta_insert.proc.php?alu_id="+a; // El script a dónde se realizará la petición.
             $.ajax({
                    type: "POST",
                    url: url,
-                   data: $("#formulario").serialize(), // Adjuntar los campos del formulario enviado.
+                   data: $("form1").serialize(), // Adjuntar los campos del formulario enviado.
+                   success: function(data)
+                   {
+                       //$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
+                   }
+                 });
+
+            $.ajax({
+                   type: "POST",
+                   url: url,
+                   data: $("form2").serialize(), // Adjuntar los campos del formulario enviado.
+                   success: function(data)
+                   {
+                       //$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
+                   }
+                 });
+            $.ajax({
+                   type: "POST",
+                   url: url,
+                   data: $("form3").serialize(), // Adjuntar los campos del formulario enviado.
+                   success: function(data)
+                   {
+                       //$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
+                   }
+                 });
+            $.ajax({
+                   type: "POST",
+                   url: url,
+                   data: $("form4").serialize(), // Adjuntar los campos del formulario enviado.
                    success: function(data)
                    {
                        //$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
@@ -20,6 +51,7 @@ $(function(){
   //--- FUNCIÓN PARA RELLENAR LOS SELECT:
 
 $(function(){
+
           $.ajax({
                    type: "POST",
                    url: "enquesta_select.proc.php",
@@ -44,3 +76,21 @@ $(function(){
             return false; // Evitar ejecutar el submit del formulario.
 
 });
+
+
+
+(function($) {  
+    $.get = function(key)   {  
+        key = key.replace(/[\[]/, '\\[');  
+        key = key.replace(/[\]]/, '\\]');  
+        var pattern = "[\\?&]" + key + "=([^&#]*)";  
+        var regex = new RegExp(pattern);  
+        var url = unescape(window.location.href);  
+        var results = regex.exec(url);  
+        if (results === null) {  
+            return null;  
+        } else {  
+            return results[1];  
+        }  
+    }  
+})(jQuery);  
