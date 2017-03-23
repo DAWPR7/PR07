@@ -46,7 +46,7 @@ if(isset($_POST['enter'])){
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/login.css" />
 	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="chat-menor/style.css" />
+	<link rel="stylesheet" href="cmenor-style.css" />
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 	<!-- TITLE -->
 	<title>Hermano Menor</title>
@@ -81,7 +81,8 @@ if(isset($_POST['enter'])){
 
 		<?php
 		if(!isset($_SESSION['name'])){
-			header("Location: index.php")
+			loginForm();
+			// header("Location: index.php");
 		 ?>
 		</div>
 		<?php
@@ -97,15 +98,16 @@ if(isset($_POST['enter'])){
 					<div style="clear:both"></div>
 				</div>
 				<div id="chatbox"><?php
-				if(file_exists("log.html") && filesize("log.html") > 0){
-					$handle = fopen("log.html", "r");
-					$contents = fread($handle, filesize("log.html"));
+				if(file_exists("cmenor-log.html") && filesize("cmenor-log.html") > 0){
+					$handle = fopen("cmenor-log.html", "r");
+					$contents = fread($handle, filesize("cmenor-log.html"));
 					fclose($handle);
 
 					echo $contents;
 				}
 				?></div>
 
+				<!-- HAY QUE INDICAR EL INSERT A LA BBDD -->
 				<form name="message" action="">
 					<input name="usermsg" type="text" id="usermsg" size="63" />
 					<input name="submitmsg" type="submit"  id="submitmsg" value="Enviar" />
@@ -118,7 +120,7 @@ if(isset($_POST['enter'])){
 				//If user submits the form
 				$("#submitmsg").click(function(){
 					var clientmsg = $("#usermsg").val();
-					$.post("post.php", {text: clientmsg});
+					$.post("cmenor-post.php", {text: clientmsg});
 					$("#usermsg").attr("value", "");
 					return false;
 				});
@@ -127,7 +129,7 @@ if(isset($_POST['enter'])){
 				function loadLog(){
 					var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20;
 					$.ajax({
-						url: "log.html",
+						url: "cmenor-log.html",
 						cache: false,
 						success: function(html){
 							$("#chatbox").html(html); //Insert chat log into the #chatbox div
