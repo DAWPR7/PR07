@@ -4,12 +4,12 @@ $(function(){
           $("#btn_enviar").click(function(){
 
           var a = $.get("id");
-          alert(a);
-            var url = "enquesta_insert.proc.php?alu_id="+a; // El script a dónde se realizará la petición.
+          //alert(a);
+            //var url = "enquesta_insert_form1.proc.php?alu_id="+a; // El script a dónde se realizará la petición.
             $.ajax({
                    type: "POST",
-                   url: url,
-                   data: $("form1").serialize(), // Adjuntar los campos del formulario enviado.
+                   url: "enquesta_insert_form1.proc.php?alu_id="+a,
+                   data: $("#form1").serialize(), // Adjuntar los campos del formulario enviado.
                    success: function(data)
                    {
                        //$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
@@ -18,8 +18,8 @@ $(function(){
 
             $.ajax({
                    type: "POST",
-                   url: url,
-                   data: $("form2").serialize(), // Adjuntar los campos del formulario enviado.
+                   url: "enquesta_insert_form2.proc.php?alu_id="+a,
+                   data: $("#form2").serialize(), // Adjuntar los campos del formulario enviado.
                    success: function(data)
                    {
                        //$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
@@ -27,8 +27,8 @@ $(function(){
                  });
             $.ajax({
                    type: "POST",
-                   url: url,
-                   data: $("form3").serialize(), // Adjuntar los campos del formulario enviado.
+                   url: "enquesta_insert_form2.proc.php?alu_id="+a,
+                   data: $("#form3").serialize(), // Adjuntar los campos del formulario enviado.
                    success: function(data)
                    {
                        //$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
@@ -36,8 +36,8 @@ $(function(){
                  });
             $.ajax({
                    type: "POST",
-                   url: url,
-                   data: $("form4").serialize(), // Adjuntar los campos del formulario enviado.
+                   url: "enquesta_insert_form2.proc.php?alu_id="+a,
+                   data: $("#form4").serialize(), // Adjuntar los campos del formulario enviado.
                    success: function(data)
                    {
                        //$("#respuesta").html(data); // Mostrar la respuestas del script PHP.

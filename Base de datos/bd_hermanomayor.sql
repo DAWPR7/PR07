@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-03-2017 a las 17:53:56
+-- Tiempo de generación: 24-03-2017 a las 15:51:14
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.5.37
 
@@ -66,7 +66,8 @@ CREATE TABLE `tbl_alumno` (
 
 INSERT INTO `tbl_alumno` (`alu_id`, `alu_matricula`, `alu_nombre`, `alu_apellidos`, `alu_etapa`, `alu_curso`) VALUES
 (1, 100005525, 'Daniel', 'Vargas', 'FP', '2'),
-(2, 100005525, 'Daniel', 'Vargas', 'FP', '2');
+(2, 100005525, 'Ruben', 'Perez', 'FP', '2'),
+(4, 32131, 'Laura', 'Gonzalo Pérez', 'FP', '2');
 
 -- --------------------------------------------------------
 
@@ -77,8 +78,7 @@ INSERT INTO `tbl_alumno` (`alu_id`, `alu_matricula`, `alu_nombre`, `alu_apellido
 DROP TABLE IF EXISTS `tbl_denuncia`;
 CREATE TABLE `tbl_denuncia` (
   `den_id` int(11) NOT NULL,
-  `den_mensaje` text COLLATE utf8_unicode_ci NOT NULL,
-  `den_tipo` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `den_mensaje` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -103,6 +103,104 @@ CREATE TABLE `tbl_dialogo` (
 --   `his_id`
 --       `tbl_historial` -> `his_id`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_for1_resp`
+--
+
+DROP TABLE IF EXISTS `tbl_for1_resp`;
+CREATE TABLE `tbl_for1_resp` (
+  `for1_id` int(11) NOT NULL,
+  `alu_id` int(11) NOT NULL,
+  `for1_pregunta` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `for1_respuesta` text COLLATE utf8_unicode_ci NOT NULL,
+  `for1_fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- RELACIONES PARA LA TABLA `tbl_for1_resp`:
+--   `alu_id`
+--       `tbl_alumno` -> `alu_id`
+--
+
+--
+-- Volcado de datos para la tabla `tbl_for1_resp`
+--
+
+INSERT INTO `tbl_for1_resp` (`for1_id`, `alu_id`, `for1_pregunta`, `for1_respuesta`, `for1_fecha`) VALUES
+(120, 2, 'pre_1', 'Escriu els noms de 3 companys de classe que siguin els més amables, respectuosos i que ajudin als altres', '2017-03-23'),
+(121, 2, 'pre_2', 'Hi ha conflictes entre companys de classe?', '2017-03-23'),
+(122, 2, 'pre_3', 'NOM I COGNOMS', '2017-03-23'),
+(123, 2, 'pre_4', 'Com et sents a la teva classe?', '2017-03-23'),
+(124, 2, 'pre_5', 'Hi tens amics, a la teva classe? quins?', '2017-03-23'),
+(125, 2, 'pre_6', 'Hi ha tranquil·litat i ordre per a fer-hi classe?', '2017-03-23');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_for2_resp`
+--
+
+DROP TABLE IF EXISTS `tbl_for2_resp`;
+CREATE TABLE `tbl_for2_resp` (
+  `for2_id` int(11) NOT NULL,
+  `alu_id` int(11) NOT NULL,
+  `for2_alu_id` int(11) NOT NULL,
+  `for2_tipo` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `for2_pregunta` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `for2_respuesta` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `for2_fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- RELACIONES PARA LA TABLA `tbl_for2_resp`:
+--   `alu_id`
+--       `tbl_alumno` -> `alu_id`
+--
+
+--
+-- Volcado de datos para la tabla `tbl_for2_resp`
+--
+
+INSERT INTO `tbl_for2_resp` (`for2_id`, `alu_id`, `for2_alu_id`, `for2_tipo`, `for2_pregunta`, `for2_respuesta`, `for2_fecha`) VALUES
+(304, 2, 1, 'FISICO', 'pre_1', 'SI', '2017-03-23'),
+(305, 2, 1, 'VERBAL', 'pre_2', 'SI', '2017-03-23'),
+(306, 2, 1, 'VERBAL', 'pre_3', 'SI', '2017-03-23'),
+(307, 2, 1, 'SOCIAL', 'pre_4', 'SI', '2017-03-23'),
+(308, 2, 1, 'FISICO', 'pre_5', 'SI', '2017-03-23'),
+(309, 2, 1, 'VERBAL', 'pre_6', 'SI', '2017-03-23'),
+(310, 2, 1, 'SOCIAL', 'pre_7', 'SI', '2017-03-23'),
+(311, 2, 1, 'SOCIAL', 'pre_8', 'SI', '2017-03-23'),
+(312, 2, 1, 'VERBAL', 'pre_9', 'SI', '2017-03-23'),
+(313, 2, 1, 'FISICO', 'pre_10', 'SI', '2017-03-23'),
+(314, 2, 1, 'FISICO', 'pre_11', 'SI', '2017-03-23'),
+(315, 2, 1, 'SOCIAL', 'pre_12', 'SI', '2017-03-23'),
+(316, 2, 1, 'FISICO', 'pre_1', 'SI', '2017-03-23'),
+(317, 2, 1, 'VERBAL', 'pre_2', 'SI', '2017-03-23'),
+(318, 2, 1, 'VERBAL', 'pre_3', 'SI', '2017-03-23'),
+(319, 2, 1, 'SOCIAL', 'pre_4', 'SI', '2017-03-23'),
+(320, 2, 1, 'FISICO', 'pre_5', 'SI', '2017-03-23'),
+(321, 2, 1, 'VERBAL', 'pre_6', 'SI', '2017-03-23'),
+(322, 2, 1, 'SOCIAL', 'pre_7', 'SI', '2017-03-23'),
+(323, 2, 1, 'SOCIAL', 'pre_8', 'SI', '2017-03-23'),
+(324, 2, 1, 'VERBAL', 'pre_9', 'SI', '2017-03-23'),
+(325, 2, 1, 'FISICO', 'pre_10', 'SI', '2017-03-23'),
+(326, 2, 1, 'FISICO', 'pre_11', 'SI', '2017-03-23'),
+(327, 2, 1, 'SOCIAL', 'pre_12', 'SI', '2017-03-23'),
+(328, 2, 1, 'FISICO', 'pre_1', 'SI', '2017-03-24'),
+(329, 2, 1, 'VERBAL', 'pre_2', 'SI', '2017-03-24'),
+(330, 2, 1, 'VERBAL', 'pre_3', 'SI', '2017-03-24'),
+(331, 2, 1, 'SOCIAL', 'pre_4', 'SI', '2017-03-24'),
+(332, 2, 1, 'FISICO', 'pre_5', 'SI', '2017-03-24'),
+(333, 2, 1, 'VERBAL', 'pre_6', 'SI', '2017-03-24'),
+(334, 2, 1, 'SOCIAL', 'pre_7', 'SI', '2017-03-24'),
+(335, 2, 1, 'SOCIAL', 'pre_8', 'SI', '2017-03-24'),
+(336, 2, 1, 'VERBAL', 'pre_9', 'SI', '2017-03-24'),
+(337, 2, 1, 'FISICO', 'pre_10', 'SI', '2017-03-24'),
+(338, 2, 1, 'FISICO', 'pre_11', 'SI', '2017-03-24'),
+(339, 2, 1, 'SOCIAL', 'pre_12', 'SI', '2017-03-24');
 
 -- --------------------------------------------------------
 
@@ -191,27 +289,6 @@ CREATE TABLE `tbl_psico` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_respuesta`
---
-
-DROP TABLE IF EXISTS `tbl_respuesta`;
-CREATE TABLE `tbl_respuesta` (
-  `res_id` int(11) NOT NULL,
-  `alu_id` int(11) NOT NULL,
-  `res_pregunta` int(2) NOT NULL,
-  `res_tipo` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `res_respuesta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- RELACIONES PARA LA TABLA `tbl_respuesta`:
---   `alu_id`
---       `tbl_alumno` -> `alu_id`
---
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `tbl_resultado`
 --
 
@@ -221,7 +298,8 @@ CREATE TABLE `tbl_resultado` (
   `alu_id` int(11) NOT NULL,
   `res_verbal` int(11) NOT NULL,
   `res_fisico` int(11) NOT NULL,
-  `res_relacional` int(11) NOT NULL
+  `res_relacional` int(11) NOT NULL,
+  `res_data` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -229,6 +307,16 @@ CREATE TABLE `tbl_resultado` (
 --   `alu_id`
 --       `tbl_alumno` -> `alu_id`
 --
+
+--
+-- Volcado de datos para la tabla `tbl_resultado`
+--
+
+INSERT INTO `tbl_resultado` (`res_id`, `alu_id`, `res_verbal`, `res_fisico`, `res_relacional`, `res_data`) VALUES
+(1, 1, 1, 1, 1, '2017-03-10'),
+(2, 2, 2, 3, 1, '2017-03-16'),
+(8, 1, 4, 4, 4, '2017-03-23'),
+(9, 1, 4, 4, 4, '2017-03-24');
 
 -- --------------------------------------------------------
 
@@ -264,10 +352,28 @@ ALTER TABLE `tbl_alumno`
   ADD PRIMARY KEY (`alu_id`);
 
 --
+-- Indices de la tabla `tbl_denuncia`
+--
+ALTER TABLE `tbl_denuncia`
+  ADD PRIMARY KEY (`den_id`);
+
+--
 -- Indices de la tabla `tbl_dialogo`
 --
 ALTER TABLE `tbl_dialogo`
   ADD PRIMARY KEY (`dia_id`);
+
+--
+-- Indices de la tabla `tbl_for1_resp`
+--
+ALTER TABLE `tbl_for1_resp`
+  ADD PRIMARY KEY (`for1_id`);
+
+--
+-- Indices de la tabla `tbl_for2_resp`
+--
+ALTER TABLE `tbl_for2_resp`
+  ADD PRIMARY KEY (`for2_id`);
 
 --
 -- Indices de la tabla `tbl_historial`
@@ -294,12 +400,6 @@ ALTER TABLE `tbl_psico`
   ADD PRIMARY KEY (`psi_id`);
 
 --
--- Indices de la tabla `tbl_respuesta`
---
-ALTER TABLE `tbl_respuesta`
-  ADD PRIMARY KEY (`res_id`);
-
---
 -- Indices de la tabla `tbl_resultado`
 --
 ALTER TABLE `tbl_resultado`
@@ -324,12 +424,27 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT de la tabla `tbl_alumno`
 --
 ALTER TABLE `tbl_alumno`
-  MODIFY `alu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `alu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `tbl_denuncia`
+--
+ALTER TABLE `tbl_denuncia`
+  MODIFY `den_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tbl_dialogo`
 --
 ALTER TABLE `tbl_dialogo`
   MODIFY `dia_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_for1_resp`
+--
+ALTER TABLE `tbl_for1_resp`
+  MODIFY `for1_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+--
+-- AUTO_INCREMENT de la tabla `tbl_for2_resp`
+--
+ALTER TABLE `tbl_for2_resp`
+  MODIFY `for2_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=340;
 --
 -- AUTO_INCREMENT de la tabla `tbl_historial`
 --
@@ -351,116 +466,15 @@ ALTER TABLE `tbl_hmenor`
 ALTER TABLE `tbl_psico`
   MODIFY `psi_id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tbl_respuesta`
---
-ALTER TABLE `tbl_respuesta`
-  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT de la tabla `tbl_resultado`
 --
 ALTER TABLE `tbl_resultado`
-  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Metadatos
---
-USE `phpmyadmin`;
-
---
--- Metadatos para tbl_admin
---
-
---
--- Metadatos para tbl_alumno
---
-
---
--- Metadatos para tbl_denuncia
---
-
---
--- Metadatos para tbl_dialogo
---
-
---
--- Metadatos para tbl_historial
---
-
---
--- Metadatos para tbl_hmayor
---
-
---
--- Metadatos para tbl_hmenor
---
-
---
--- Metadatos para tbl_psico
---
-
---
--- Metadatos para tbl_respuesta
---
-
---
--- Metadatos para tbl_resultado
---
-
---
--- Metadatos para tbl_user
---
-
---
--- Metadatos para bd_hermanomayor
---
-
---
--- Volcado de datos para la tabla `pma__relation`
---
-
-INSERT INTO `pma__relation` (`master_db`, `master_table`, `master_field`, `foreign_db`, `foreign_table`, `foreign_field`) VALUES
-('bd_hermanomayor', 'tbl_admin', 'user_id', 'bd_hermanomayor', 'tbl_user', 'user_id'),
-('bd_hermanomayor', 'tbl_dialogo', 'his_id', 'bd_hermanomayor', 'tbl_historial', 'his_id'),
-('bd_hermanomayor', 'tbl_historial', 'hma_id', 'bd_hermanomayor', 'tbl_hmayor', 'hma_id'),
-('bd_hermanomayor', 'tbl_historial', 'hme_id', 'bd_hermanomayor', 'tbl_hmenor', 'hme_id'),
-('bd_hermanomayor', 'tbl_historial', 'psi_id', 'bd_hermanomayor', 'tbl_psico', 'psi_id'),
-('bd_hermanomayor', 'tbl_hmayor', 'user_id', 'bd_hermanomayor', 'tbl_user', 'user_id'),
-('bd_hermanomayor', 'tbl_hmenor', 'user_id', 'bd_hermanomayor', 'tbl_user', 'user_id'),
-('bd_hermanomayor', 'tbl_psico', 'user_id', 'bd_hermanomayor', 'tbl_user', 'user_id'),
-('bd_hermanomayor', 'tbl_respuesta', 'alu_id', 'bd_hermanomayor', 'tbl_alumno', 'alu_id'),
-('bd_hermanomayor', 'tbl_resultado', 'alu_id', 'bd_hermanomayor', 'tbl_alumno', 'alu_id');
-
---
--- Volcado de datos para la tabla `pma__pdf_pages`
---
-
-INSERT INTO `pma__pdf_pages` (`db_name`, `page_descr`) VALUES
-('bd_hermanomayor', 'relaciones1');
-
-SET @LAST_PAGE = LAST_INSERT_ID();
-
---
--- Volcado de datos para la tabla `pma__table_coords`
---
-
-INSERT INTO `pma__table_coords` (`db_name`, `table_name`, `pdf_page_number`, `x`, `y`) VALUES
-('bd_hermanomayor', 'tbl_admin', @LAST_PAGE, 321, 360),
-('bd_hermanomayor', 'tbl_alumno', @LAST_PAGE, 996, 294),
-('bd_hermanomayor', 'tbl_denuncia', @LAST_PAGE, 44, 485),
-('bd_hermanomayor', 'tbl_dialogo', @LAST_PAGE, 690, 21),
-('bd_hermanomayor', 'tbl_historial', @LAST_PAGE, 685, 194),
-('bd_hermanomayor', 'tbl_hmayor', @LAST_PAGE, 320, 27),
-('bd_hermanomayor', 'tbl_hmenor', @LAST_PAGE, 322, 153),
-('bd_hermanomayor', 'tbl_psico', @LAST_PAGE, 322, 278),
-('bd_hermanomayor', 'tbl_respuesta', @LAST_PAGE, 686, 463),
-('bd_hermanomayor', 'tbl_resultado', @LAST_PAGE, 1001, 53),
-('bd_hermanomayor', 'tbl_user', @LAST_PAGE, 42, 151);
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
