@@ -20,12 +20,12 @@
             <form action="registro_menor.proc.php" method="POST" class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus>
-                <input type="password" name="password1" id="inputPassword" class="form-control" placeholder="Password" required>
-               	<input type="password" name="password2" id="inputPassword" class="form-control" placeholder=" Confirma Password" required>
+                <input type="password" name="password1" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+               	<input type="password" name="password2" id="inputPassword" class="form-control" placeholder=" Confirmar contraseña" required>
                 <button class="btn-primary btn btn-danger" type="submit">Confirmar</button>
             <p class="form-group">Al continuar confirmas que has leído y que estás de acuerdo con las <a href="condiciones_uso.php">Condiciones de uso</a> y <a href="politica_privacidad.php">Política de privacidad</a>.</p>
 						<hr>
-						<p></p>¿Ya tienes cuenta? <a href="index.php">Inicia sesión</a></p>
+						<p>¿Ya tienes cuenta? <a href="index.php">Inicia sesión</a></p>
             </form><!-- /form -->
             <!--<a href="#" class="forgot-password">
                 Forgot the password?

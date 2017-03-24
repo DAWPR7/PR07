@@ -12,17 +12,15 @@
 <body background="IMG/login.jpg">
 <div class="container">
 <div class="row">
-   <div class=""><a href='index.php'><i class='fa fa-arrow-circle-left fa-3x' aria-hidden='true' title='Atrás'></i></a></br></div>
+   <div class=""><a href='registro_menor.php'><i class='fa fa-arrow-circle-left fa-3x' aria-hidden='true' title='Atrás'></i></a></br></div>
 </div>
 <div class="card">
   <div class="card-block">
-    <h4 class="card-title">Condiciones Generales de Uso</h4>
-    <h6 class="card-subtitle mb-2 text-muted">Descripción</h6>
-    <p class="card-text">Hermano Mayor ha desarrollado una plataforma de ayuda contra el acoso escolar a la que se puede acceder desde el sitio web www.hermanomayor.es, diseñada para poner en contacto a los alumnos que sufren acoso con otros alumnos que puedan servir de ayuda, de forma que puedan compartir vivencias y ayudarse.
+    <h4 class="card-title">Política de Privacidad</h4>
+    <h6 class="card-subtitle mb-2 text-muted">General</h6>
+    <p class="card-text">Hermano Mayor (con domicilio social en avenida Mare de Deu de Bellvitge, 110 Hospitalet, España), interviniendo como responsable del tratamiento de datos, se compromete a proteger y a respetar tu privacidad. Este documento (la “Política de Privacidad”) está diseñado para informarte sobre nuestras prácticas en lo referente a la recopilación, uso y divulgación de la información que nos proporciones a través de esta página web www.hermanomayor.es.
 
-Los presentes términos y condiciones tienen por objeto regular el acceso y los términos de uso de la Plataforma. Se ruega leer atentamente estas condiciones. Entiendes y reconoces que Hermano Mayor no es parte en ningún contrato, acuerdo o relación contractual, de ninguna clase, suscrito entre los Usuarios de su Plataforma.
-
-Al hacer clic en “Registrarse con un usuario”, reconoces que has leído y aceptado las presentes condiciones generales de uso.</p>
+Esta Política de Privacidad (junto con nuestros Términos y Condiciones y el resto de documentos a los que se hace referencia en ellos y en nuestra Política de Cookies establece el marco según el cual se recogerán y tratarán tus datos personales. Lee detenidamente este texto para que comprendas nuestra posición y prácticas respecto a tus datos personales y cómo los trataremos.</p>
     <h6 class="card-subtitle mb-2 text-muted">¿Qué información es la que recogemos?</h6>
     <p class="card-text">Información que tú nos proporcionas</p><p>Información obligatoria necesaria para registrarse en el servicio que proporcionamos en nuestra Página Web; estos datos incluyen tu usuario y una contraseña. Todos estos campos son obligatorios. Hermano Mayor no podrá proporcionarte los servicios ofrecidos en nuestra página si no nos das la información necesaria para poder crearte una cuenta de usuario en nuestra Página Web;</p>
 
@@ -43,7 +41,7 @@ Al hacer clic en “Registrarse con un usuario”, reconoces que has leído y ac
     <p class="card-text">Cualquier modificación que realicemos en nuestra Política de Privacidad se publicará en esta página. Cuando corresponda, te lo notificaremos o pediremos tu consentimiento. Por favor, comprueba frecuentemente si existe alguna actualización o modificación en nuestra Política de Privacidad. </p>
 
 
-    <h5 class="card-subtitle mb-2 text-muted">Versión de 23 de marzo de 2017</h5>
+    <h5 class="card-subtitle mb-2 text-muted">Versión de 24 de marzo de 2017</h5>
   </div>
 </div>
 <!-- Footer -->
