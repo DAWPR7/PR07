@@ -43,10 +43,12 @@ if(isset($_POST['enter'])){
 
 <?php
 if(!isset($_SESSION['name'])){
-	loginForm();
+	// loginForm();
+	header("Location: index.php");
 }
 else{
 ?>
+<body>
 <div id="wrapper">
 	<div id="menu">
 		<p class="welcome">Hola, <b><?php echo $_SESSION['name']; ?></b></p>
