@@ -1,8 +1,26 @@
 <?php 
 	require_once("includes/conexion.proc.php");
 	extract($_POST);
-	
-	$insert_his_sql =  "INSERT INTO `tbl_historial` ( `hma_id`, `hme_id`, `his_fecha_inicio`, `his_comentario`, `psi_id`) VALUES ('".$hmayor."', '".$hmenor."', CURRENT_TIMESTAMP, '".$nota."', '".$psico."');";
+	//Consulta para coger el hma_id através del user
+		$id_hme_sql = "SELECT `hme_id`from `tbl_hmenor` WHERE `user_id` = ".$hmenor;
+ 							
+ 								$id_hme_query = mysqli_query($conexion,$id_hme_sql);
+
+ 								while($id_hme = mysqli_fetch_array($id_hme_query))
+ 								{
+ 									$hme = $id_hme['hme_id'];
+ 								}
+ 								//echo $hme;die;
+ 		$id_hma_sql = "SELECT `hma_id`from `tbl_hmayor` WHERE `user_id` = ".$hmayor;
+ 							//echo $id_hma_sql;die;
+ 								$id_hma_query = mysqli_query($conexion,$id_hma_sql);
+
+ 								while($id_hma = mysqli_fetch_array($id_hma_query))
+ 								{
+ 									$hma = $id_hma['hma_id'];
+ 								}
+ 								//echo $hma;die;
+	$insert_his_sql =  "INSERT INTO `tbl_historial` ( `hma_id`, `hme_id`, `his_fecha_inicio`, `his_comentario`, `psi_id`) VALUES ('".$hma."', '".$hme."', CURRENT_TIMESTAMP, '".$nota."', '".$psico."');";
 	if (mysqli_query($conexion,$insert_his_sql))
 		{
 			$update_hmayor_sql="UPDATE `tbl_hmayor` SET `hma_estado` = 'ocupado' WHERE `tbl_hmayor`.`user_id` = ".$hmayor.";";

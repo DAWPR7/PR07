@@ -4,7 +4,7 @@
 			document.getElementById("ch_note").style.display="block";
 		}
 	</script>
-	<table border>
+	
 		<?php 
 			require_once("includes/conexion.proc.php");
 			$sh_terapias_sql = "
@@ -15,6 +15,7 @@
 			$sh_terapias = mysqli_query($conexion, $sh_terapias_sql);
 			while($terapia = mysqli_fetch_array($sh_terapias))
 			{
+				echo "<table border>";
 				echo "<tr>
  					<td>
  						Hermano menor:
@@ -70,7 +71,7 @@
 					echo "<td><a href='ch_hmayor.php?id=".$terapia['hma_id']."&hid=".$terapia['his_id']."'><button>Cambiar hermano mayor</button></a></td>";
 					echo "<td><a href='en_terapia.php?id=".$terapia['his_id']."'><button>Finalizar terapia</button></a></td>";
 				echo "</tr>";
-
+				echo "</table>";
 
 			}
 		 ?>
