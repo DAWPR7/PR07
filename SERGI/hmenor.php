@@ -100,15 +100,15 @@ if(isset($_POST['enter'])){
 				</div>
 				<div id="chatbox">
 
-				<?php
-				if(file_exists("cmenor-log.html") && filesize("cmenor-log.html") > 0){
-					$handle = fopen("cmenor-log.html", "r");
-					$contents = fread($handle, filesize("cmenor-log.html"));
-					fclose($handle);
-
-					echo $contents;
-				}
-				?>
+				<!-- <?php
+				// if(file_exists("cmenor-log.html") && filesize("cmenor-log.html") > 0){
+				// 	$handle = fopen("cmenor-log.html", "r");
+				// 	$contents = fread($handle, filesize("cmenor-log.html"));
+				// 	fclose($handle);
+				//
+				// 	echo $contents;
+				// }
+				?> -->
 
 				</div>
 
