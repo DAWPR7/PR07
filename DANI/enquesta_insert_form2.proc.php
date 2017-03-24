@@ -15,8 +15,6 @@ $social=0;
 
 
 
-
-
 // ----- SQL PARA INSERTAR REGISTROS EN LA TABLA RESPUESTAS:
 $insertRespuesta = $databaseConnection->prepare("INSERT INTO tbl_for2_resp (alu_id, for2_alu_id, for2_tipo, for2_pregunta, for2_respuesta, for2_fecha) VALUES (:alu_id, :for2_alu_id, :for2_tipo, :for2_pregunta, :for2_respuesta, :for2_fecha)");
 
@@ -42,33 +40,36 @@ $selectResultado = $databaseConnection->prepare("SELECT res_id FROM tbl_resultad
 
 
 // ----- SQL PARA SELECCIONAR LOS RESULTADOS DEL FORMULARIO:
-$selectResultado = $databaseConnection->prepare("SELECT COUNT(for2_respuesta) AS TOTAL, for2_tipo FROM `tbl_for2_resp` WHERE for2_respuesta='SI', for2_fecha=:for2_fecha AND for2_alu_id=:for2_alu_id GROUP BY for2_alu_id, for2_tipo");
+$selectFormulario = $databaseConnection->prepare("SELECT COUNT(for2_respuesta) AS TOTAL, for2_alu_id, for2_tipo, for2_fecha FROM tbl_for2_resp WHERE for2_respuesta='SI' and for2_alu_id=:for2_alu_id AND for2_fecha=:for2_fecha GROUP BY for2_alu_id, for2_tipo");
                
 
-              $selectResultado->bindParam(':for2_alu_id', $for2_alu_id);
-              $selectResultado->bindParam(':for2_fecha', $fecha);
-              $selectResultado->bindParam(':for2_tipo', $for2_tipo);
+              $selectFormulario->bindParam(':for2_alu_id', $for2_alu_id);
+              $selectFormulario->bindParam(':for2_fecha', $fecha);
 
 
-              // SELECT COUNT(for2_respuesta) AS TOTAL, for2_alu_id, for2_tipo FROM `tbl_for2_resp` WHERE for2_respuesta="SI" GROUP BY for2_alu_id, for2_tipo
+// ----- SQL PARA ACTUALIZAR LA TABLA RESULTADOS:
+$updateResultado = $databaseConnection->prepare("UPDATE tbl_resultado SET res_verbal = :res_verbal, res_fisico = :res_fisico, res_social = :res_social WHERE res_data = :for2_fecha AND alu_id=:alu_id ");
+
+              $updateResultado->bindParam(':res_verbal', $res_verbal);
+              $updateResultado->bindParam(':res_fisico', $res_fisico);
+              $updateResultado->bindParam(':res_social', $res_social);
+              $updateResultado->bindParam(':alu_id', $for2_alu_id);
+              $updateResultado->bindParam(':for2_fecha', $fecha);
+
+
 
 
 
 // ----- SQL PARA INSERTAR REGISTROS EN LA TABLA RESULTADO:
-$insertResultado = $databaseConnection->prepare("INSERT INTO tbl_resultado (alu_id, res_verbal, res_fisico, res_relacional, res_data) VALUES (:alu_id, :res_verbal, :res_fisico, :res_relacional, :res_data)");
+$insertResultado = $databaseConnection->prepare("INSERT INTO tbl_resultado (alu_id, res_verbal, res_fisico, res_social, res_data) VALUES (:alu_id, :res_verbal, :res_fisico, :res_social, :res_data)");
 
               $insertResultado->bindParam(':alu_id', $for2_alu_id);
               $insertResultado->bindParam(':res_verbal', $res_verbal);
               $insertResultado->bindParam(':res_fisico', $res_fisico);
-              $insertResultado->bindParam(':res_relacional', $res_relacional);
+              $insertResultado->bindParam(':res_social', $res_social);
               $insertResultado->bindParam(':res_data', $fecha);
 
 
-
-// ----- SQL PARA ACTUALIZAR REGISTROS EN LA TABLA RESULTADO:
-$updateResultado = $databaseConnection->prepare("INSERT INTO tbl_resultado (alu_id, res_verbal, res_fisico, res_relacional, res_data) VALUES (:alu_id, :res_verbal, :res_fisico, :res_relacional, :res_data)");
-
- 
 
 
 // -------------------------------------------------------------------
@@ -163,27 +164,39 @@ $updateResultado = $databaseConnection->prepare("INSERT INTO tbl_resultado (alu_
 
     $res_verbal=$verbal;
     $res_fisico=$fisico;
-    $res_relacional=$social;
+    $res_social=$social;
 
+    // echo $for2_alu_id." || ";
+    // echo $res_verbal." || ";
+    // echo $res_fisico." || ";
+    // echo $res_social." || ";
+    // echo $fecha." || ";
+    // var_dump($insertResultado);
     $insertResultado->execute();
 
   }else{
-      $t_fisico=$rows;
-      //
-      $for2_tipo='VERBAL';
-      $selectResultado->execute();
-      $rows=$selectResultado->fetchColumn();
-      $t_verbal=$rows;
-      //
-      $for2_tipo='SOCIAL';
-      $selectResultado->execute();
-      $rows=$selectResultado->fetchColumn();
-      $t_social=$rows;
+
+      $selectFormulario->execute();
+      $rows=$selectFormulario->fetchAll(PDO::FETCH_ASSOC);
+
+      foreach ($rows as $valor){
+        //print_r($valor);
+        if($valor['for2_tipo']=='FISICO'){
+          $res_fisico= $valor['TOTAL'];
+        }
+        if($valor['for2_tipo']=='VERBAL'){
+          $res_verbal= $valor['TOTAL'];
+        }
+        if($valor['for2_tipo']=='SOCIAL'){
+          $res_social= $valor['TOTAL'];
+        }
+
+      }
+
+      $updateResultado->execute();
 
   }
-           echo $t_fisico;
-           echo $t_verbal;
-           echo $t_social;  
+       
 
 
 ?>

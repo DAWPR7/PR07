@@ -1,0 +1,51 @@
+$('#tbl_resultado').bootstrapTable({
+                        method: 'get',
+                        url: 'result_select.proc.php',
+                        cache: false,
+                        striped: true,
+                        pagination: false,
+                        search: true,
+                        showColumns: true,
+                        showRefresh: true,
+                        showToggle: true,
+                        minimumCountColumns: 4,
+                        height: 450,
+                        clickToSelect: false,
+                        columns: [{
+                            field: 'alu_id',
+                            title: 'alu_id',
+                            align: 'center',
+                            valign: 'middle',
+                            sortable: true,
+                            visible: true,
+                        },{
+                            field: 'total',
+                            title: 'TOTAL',
+                            align: 'center',
+                            valign: 'middle',
+                            sortable: true,
+                            visible: true,
+                        },{
+                            field: 'res_verbal',
+                            title: 'res_verbal',
+                            align: 'center',
+                            valign: 'middle',
+                            sortable: true,
+                            visible: true,
+                        },{
+                            field: 'res_fisico',
+                            title: 'res_fisico',
+                            align: 'center',
+                            valign: 'middle',
+                            sortable: true,
+                            visible: true,
+                        },{
+                            field: 'res_social',
+                            title: 'res_social',
+                            align: 'center',
+                            valign: 'middle',
+                            sortable: true,
+                            visible: true,
+                        }]
+                    });
+                   
