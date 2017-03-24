@@ -23,7 +23,7 @@
  							$id_hme_sql = "SELECT `user_id`from `tbl_hmenor` WHERE `hme_id` = ".$terapia['hme_id'];
  							//echo $id_hme_sql;die;
  								$id_hme_query = mysqli_query($conexion,$id_hme_sql);
- 								
+
  								while($id_hme = mysqli_fetch_array($id_hme_query))
  								{
  									$sql_mat_hme="SELECT `user_matricula` FROM `tbl_user` WHERE `user_id` = ".$id_hme['user_id'];
@@ -35,17 +35,26 @@
  								}
  							
 					//Consulta para coger la matricula del hermno mayor
- 							$sql_mat_hma = "SELECT `user_matricula` FROM `tbl_user` WHERE `user_id` = ".$terapia['hma_id'];
-
+ 							//$sql_mat_hma = "SELECT `user_matricula` FROM `tbl_user` WHERE `hma_id` = ".$terapia['hma_id'];
+ 							//echo $sql_mat_hma;die;
 				echo "<td>
 						Hermano mayor:
 					  </td>";
-					$mat_hma = mysqli_query($conexion,$sql_mat_hma);
+					  //Consulta para coger al user id de la BD
+ 							$id_hma_sql = "SELECT `user_id`from `tbl_hmayor` WHERE `hma_id` = ".$terapia['hma_id'];
+ 							//echo $id_hma_sql;die;
+ 								$id_hma_query = mysqli_query($conexion,$id_hma_sql);
+ 								
+ 								while($id_hma = mysqli_fetch_array($id_hma_query))
+ 								{
+ 									$sql_mat_hma="SELECT `user_matricula` FROM `tbl_user` WHERE `user_id` = ".$id_hma['user_id'];
+ 									$mat_hma = mysqli_query($conexion,$sql_mat_hma);
  									while($matricula_hma = mysqli_fetch_array($mat_hma))
  									{
- 										
 										echo"<td>".$matricula_hma['user_matricula']."</td>";
  									}
+ 								}
+ 							
 				echo "<tr>
  					<td colspan='2'>
  						Inicio de terapia
