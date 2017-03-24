@@ -4,12 +4,13 @@ session_start();
 if(isset($_GET['logout'])){
 
 	//Simple exit message
-	$fp = fopen("log.html", 'a');
-	fwrite($fp, "<div class='msgln'><i>". $_SESSION['name'] ." se ha desconectado.</i><br></div>");
-	fclose($fp);
+
+	// $fp = fopen("log.html", 'a');
+	// fwrite($fp, "<div class='msgln'><i>". $_SESSION['name'] ." se ha desconectado.</i><br></div>");
+	// fclose($fp);
 
 	session_destroy();
-	header("Location: hmenor.php"); //Redirect the user
+	header("Location: hmenor.php"); //EN PRUEBAS ES HMENOR, SINO INDEX.PHP
 }
 
 function loginForm(){
@@ -77,27 +78,29 @@ if(isset($_POST['enter'])){
 	<!-- DIV CONTENIDO -->
 	<div class="container">
 
-		<div class="contenedor-chat">
 
+		<!-- SI NO HAY SESION LO DEVUELVE A INDEX -->
 		<?php
 		if(!isset($_SESSION['name'])){
 			loginForm();
 			// header("Location: index.php");
 		 ?>
-		</div>
+
 		<?php
-		}else{
+		} else {
 		?>
 
-    <div class="contenedor-chat">
+    <!-- <div class="contenedor-chat"> -->
 
 			<div id="wrapper">
 				<div id="menu">
-					<p class="welcome">Hola, <b><?php echo $_SESSION['name']; ?></b></p>
+					<p class="welcome">Bienvenido! <!-- <b><?php echo $_SESSION['name']; ?></b> --></p>
 					<p class="logout"><a id="exit" href="#">Desconectarse</a></p>
 					<div style="clear:both"></div>
 				</div>
-				<div id="chatbox"><?php
+				<div id="chatbox">
+
+				<?php
 				if(file_exists("cmenor-log.html") && filesize("cmenor-log.html") > 0){
 					$handle = fopen("cmenor-log.html", "r");
 					$contents = fread($handle, filesize("cmenor-log.html"));
@@ -105,12 +108,15 @@ if(isset($_POST['enter'])){
 
 					echo $contents;
 				}
-				?></div>
+				?>
+
+				</div>
 
 				<!-- HAY QUE INDICAR EL INSERT A LA BBDD -->
-				<form name="message" action="">
-					<input name="usermsg" type="text" id="usermsg" size="63" />
-					<input name="submitmsg" type="submit"  id="submitmsg" value="Enviar" />
+				<form name="message" action="" id="formMensaje">
+					<input name="historial" type="hidden" id="historial" value="<?php  ?>" />
+					<input name="usermsg" type="text" id="usermsg" size="50" />
+					<input name="submitmsg" type="submit"  id="submitmsg" value="Enviar" onclick="enviarMensaje()" />
 				</form>
 			</div>
 			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
@@ -149,6 +155,19 @@ if(isset($_POST['enter'])){
 				});
 			});
 			</script>
+			<script>
+			function enviarMensaje(){
+			$.ajax({
+                   type: "POST",
+                   url: "cmenor_msg_insert.php",
+                   data: $("#formMensaje").serialize(), // Adjuntar los campos del formulario enviado.
+                   success: function(data)
+                   {
+                       //$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
+                   }
+                 });
+			}
+			</script>
 
     </div>
 
@@ -156,7 +175,7 @@ if(isset($_POST['enter'])){
 		}
 		?>
 
-  </div>
+  <!-- </div> -->
 <!-- INCUDE FOOTER -->
 <?php
 include("footer.php");

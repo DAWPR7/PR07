@@ -21,8 +21,8 @@ a {
 #wrapper, #loginform {
 	margin:0 auto;
 	padding-bottom:25px;
-	background:#EBF4FB;
-	width:504px;
+	background:#4274B8;
+	width:550px;
 	border:1px solid #ACD8F0;
   margin-left: auto;
   margin-right: auto;
@@ -55,6 +55,6 @@ a {
 
 .welcome { float:left; }
 
-.logout { float:right; }
+.logout { float:right; color: #ff0000; text-decoration: none; }
 
 .msgln { margin:0 0 2px 0; }
