@@ -37,16 +37,18 @@ if(isset($_POST['enter'])){
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Chat - Customer Module</title>
+<title>Chat</title>
 <link type="text/css" rel="stylesheet" href="style.css" />
 </head>
 
 <?php
 if(!isset($_SESSION['name'])){
-	loginForm();
+	// loginForm();
+	header("Location: index.php");
 }
 else{
 ?>
+<body>
 <div id="wrapper">
 	<div id="menu">
 		<p class="welcome">Hola, <b><?php echo $_SESSION['name']; ?></b></p>

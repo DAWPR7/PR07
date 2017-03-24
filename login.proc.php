@@ -1,18 +1,22 @@
 <?php
 session_start();
-$email=$_POST['email'];
-$password=$_POST['password'];
+echo $email=$_POST['email'];
+echo $password=$_POST['password'];
 
 include("conexion.proc.php");
 
-$proceso= $conexion->query("SELECT * FROM tbl_user WHERE user_matricula='$email' AND user_pwd = '$password'");
+$proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$email' AND user_pwd = '$password'");
 
-if($resultado = mysqli_fetch_array($proceso)){
+print_r($proceso);
+if($resultado = mysqli_fetch_field($proceso)){
+
+print_r($resultado);
+	
 	$_SESSION['email'] = $email;
-	header("Location: index.php");
+	//header("Location: index.php");
 	
 }else{
-	header("Location: login.php");
+	//header("Location: index.php");
 	
 }
 

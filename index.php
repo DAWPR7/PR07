@@ -12,21 +12,25 @@
 <body background="IMG/login.jpg">
 
 <div class="container">
-<!--FALLO RESPONISVE!!!-->
+<div class="row">
+   <div class=""><a href='index.php'><i class="fa fa-info-circle fa-3x" aria-hidden="true" title='Información'></i></a></br></div>
+</div>
 <div class="row" style="text-align: right;">
-  <div class="col-sm-offset-8" ><a href="denuncia_anonima.php"><img src="IMG/button_anonima.png" class="img-responsive img-rounded"></div></a>
+  <div class="col-md-offset-8"><a href="denuncia_anonima.php"><img src="IMG/button_anonima.png"></div></a>
 </div>
 
     <div class="card card-container">
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
-            <form action="login.proc.php" method="POST" class="form-signin">
+            <form action="login2.proc.php" method="POST" class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus>
                 <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
                
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar sesión</button>
+                <hr>
+                <p>¿No tienes cuenta? <a href="registro_menor.php">Regístrate</a></p>
             </form><!-- /form -->
             <!--<a href="#" class="forgot-password">
                 Forgot the password?
