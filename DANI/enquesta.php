@@ -71,7 +71,6 @@
         </div>
       </div>
       <hr>
-        <input type="hidden" name="form" value="1">
       </form>
       <div class="row">
         <div class="col-md-12">
@@ -240,7 +239,6 @@
 
       <br/>
       <br/>
-        <input type="hidden" name="form" value="2">
       </form>
       <form method="post" id="form4" role="form2">
       <div class="row">
@@ -324,7 +322,6 @@
       </div>
 
       <br/>
-        <input type="hidden" name="form" value="2">
       </form>
     </div>
   </div>
