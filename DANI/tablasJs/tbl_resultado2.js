@@ -4,13 +4,12 @@ $('#curs').change(function() {
     var curs = $('#curs').val();
     var cicle = $('#cicle').val();
     if(cicle!=null){etapa=cicle} 
-    // $('#tbl_resultado').bootstrapTable('refresh');   
-    $('#tbl_resultado').bootstrapTable('refresh', {
-                    url: 'result_select.proc.php?max=0&etapa='+etapa+'&curs='+curs
-    });       
+    $('#tbl_resultado2').bootstrapTable('refresh', {
+                    url: 'result_select.proc.php?max=2&etapa='+etapa+'&curs='+curs
+    }); 
 })
 
-            $('#tbl_resultado').bootstrapTable({
+            $('#tbl_resultado2').bootstrapTable({
                         method: 'get',
                         url: '',
                         cache: false,
@@ -25,7 +24,7 @@ $('#curs').change(function() {
                         clickToSelect: false,
                         onLoadSuccess: function (data) {
                             if(data!=''){
-                                $('#h0').html("Resultats data: "+data[0]["fecha"]);
+                                $('#h2').html("Resultats data: "+data[0]["fecha"]);
                             }
                             
                         },
@@ -66,4 +65,3 @@ $('#curs').change(function() {
                             visible: true,
                         }]
                     });
-                   

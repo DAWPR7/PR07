@@ -15,7 +15,7 @@
         <script src="http://code.jquery.com/jquery.js"></script>
 
   <!-- ENLACES JS -->
-        <script src="jsFunction/function.js"></script>
+        <!-- <script src="jsFunction/function.js"></script> -->
 
 <!-- BOOTSTRAP -->
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
@@ -44,23 +44,115 @@
 
 
 
-<body background="IMG/login.jpg">
+<body >
+  <div class="container" style="background-color: lightgrey;">
+      <form class="navbar-form navbar-left" role="search">
+        <label>Seleccionar l'etapa:</label>
+        <select class="form-control" name="etapa" id="etapa">
+              <option selected disabled>ETAPA</option>
+              <option >PRIMARIA</option>
+              <option >ESO</option>
+              <option >CFGM</option>
+              <option >CFGS</option>
+        </select>
+        <label> Cicle formatiu:</label>
+        <select class="form-control" name="cicle" id="cicle"  disabled>
+              <option selected disabled>CICLE FORMATIU</option>
+              <option >ASIX</option>
+              <option >DAW</option>
+              <option >OTROS</option>
+              <option >CFGS</option>
+        </select>
+        <label> Curs:</label>
+        <select class="form-control" name="curs" id="curs"  disabled>
+              <option selected disabled>CURS</option>
+              <!-- <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>4</option>
+              <option value='6'>4</option> -->
+        </select>
+        
+      </form>
+      
+  </div>
   <div class="jumbotron" style="background:transparent !important">
-    <div class="container" style="background-color: white;">
+
+    <form id="formSelect">
+      <div class="row">
+        <div class="col-md-4">
+            <h3 id="h0">Resultats data:</h3>
+            <table id="tbl_resultado" data-group-by-field="proy_id" data-height="610" data-cookie="true" data-cookie-id-table="uno"  data-toolbar="#toolbar2"></table>
+        </div>
+        <div class="col-md-4">
+            <h3 id="h1">Resultats data:</h3>
+            <table id="tbl_resultado1" data-group-by-field="proy_id" data-height="610" data-cookie="true" data-cookie-id-table="uno"  data-toolbar="#toolbar2"></table>
+        </div>
+        <div class="col-md-4">
+            <h3 id="h2">Resultats data:</h3>
+            <table id="tbl_resultado2" data-group-by-field="proy_id" data-height="610" data-cookie="true" data-cookie-id-table="uno"  data-toolbar="#toolbar2"></table>
+        </div>
+    </div>
 
       
-      <div role="tabpanel" class="row">
-                    <table id="tbl_resultado" data-group-by-field="proy_id" data-height="610" data-cookie="true" data-cookie-id-table="uno"  data-toolbar="#toolbar2"></table>
-
-      </div>
+    </form>
     
-    </div>
   </div>
 
 
 
 </body>
+<!-- ENLACE A LAS TABLAS -->
         <script type="text/javascript" src="tablasJs/tbl_resultado.js"></script>
+        <script type="text/javascript" src="tablasJs/tbl_resultado1.js"></script>
+        <script type="text/javascript" src="tablasJs/tbl_resultado2.js"></script>
+
+<!-- SCRIPT PARA EL SELECT -->
+<script type="text/javascript">
+    
+    $('#etapa').change(function() {
+
+
+      var primaria  ="<option selected disabled>CURS</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>";
+      var eso       ="<option selected disabled>CURS</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>";
+      var cicle     ="<option selected disabled>CURS</option><option value='1'>1</option><option value='2'>2</option>";
+
+      var valor = $('#etapa').val();
+      $('#curs').html('');
+
+      if(valor=='PRIMARIA'){
+        $('#curs').append(primaria);
+        $('#curs').prop('disabled', false);
+        $('#cicle').prop('disabled', true);
+      }else if(valor=='ESO'){
+        $('#curs').append(eso);
+        $('#curs').prop('disabled', false);
+        $('#cicle').prop('disabled', true);
+      }else{
+        $('#curs').append(cicle);
+        $('#curs').prop('disabled', true);
+        $('#cicle').prop('disabled', false);
+      }
+      // if((valor !='CFGM')&&(valor!='CFGS')){
+      //   $('#curs').prop('disabled', false);
+      //   alert('No es igual a ninguno');
+      // }else{
+      //   $('#curs').prop('disabled', true);
+      //   $('#cicle').prop('disabled', false);
+      // }
+    })
+    $('#cicle').change(function() {
+      var valor = $('#cicle').val();
+      $('#curs').prop('disabled', false);
+    })
+
+
+
+</script>
+
+
+
 <!-- Footer -->
 <?php
 include("footer.php");
