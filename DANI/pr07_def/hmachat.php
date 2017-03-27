@@ -1,10 +1,13 @@
 <?php
 session_start();
 
+
+
 if (!isset($_SESSION['usuario'])) {
 
   header('location:index.php');
 }else{
+  $_SESSION['hme_id']='';
   include('chat_select_historial_id.proc.php');
 }
 
@@ -44,7 +47,7 @@ if (!isset($_SESSION['usuario'])) {
         <form method="post" id="formPantallaChat">
 
           <input type="hidden" name="dia_tipo" value="h_ma">
-          <input type="hidden" name="his_id" value="<?php echo $rows ?>">
+          <input type="hidden" name="his_id" <?php echo 'value="'.$rows.'"'?> >
           <input type="hidden" name="ultimo_id" id="ultimo_id" value="0">
         </form>
           <div class="panel panel-primary"> 
@@ -104,42 +107,42 @@ $("#mandar_chat").click(function(){
               });
 })
 
-// $( document ).ready(function() {
+$( document ).ready(function() {
 
-//     function getRandValue(){
+    function getRandValue(){
 
-//             $.ajax({
-//                    type: "POST",
-//                    url: "chat_select.proc.php",
-//                    data: $("#formPantallaChat").serialize(),
-//                    dataType: "json",
-//                    success: function(data){
+            $.ajax({
+                   type: "POST",
+                   url: "chat_select.proc.php",
+                   data: $("#formPantallaChat").serialize(),
+                   dataType: "json",
+                   success: function(data){
 
-//                       for(var attr in data){
-//                         var fecha= data[attr]['dia_fecha'];
-//                         var mensaje= data[attr]['dia_mensaje'];
-//                         var tipo= data[attr]['dia_tipo'];
-//                         var id= data[attr]['dia_id'];
+                      for(var attr in data){
+                        var fecha= data[attr]['dia_fecha'];
+                        var mensaje= data[attr]['dia_mensaje'];
+                        var tipo= data[attr]['dia_tipo'];
+                        var id= data[attr]['dia_id'];
 
-//                         $('#ultimo_id').val(id);
+                        $('#ultimo_id').val(id);
 
-//                         if(tipo!='h_ma'){
+                        if(tipo!='h_ma'){
 
-//                           var div='<div class="col-md-7 col-md-offset-5"><div class="panel panel-default"><div class="panel-heading">H.Menor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
-//                           $('#contenido').prepend(div);
-//                         }else{
-//                           var div='<div class="col-md-7"><div class="panel panel-info"><div class="panel-heading">H.Mayor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
-//                           $('#contenido').prepend(div);
-//                         }
-//                       }
+                          var div='<div class="col-md-7 col-md-offset-5"><div class="panel panel-default"><div class="panel-heading">H.Menor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
+                          $('#contenido').prepend(div);
+                        }else{
+                          var div='<div class="col-md-7"><div class="panel panel-info"><div class="panel-heading">H.Mayor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
+                          $('#contenido').prepend(div);
+                        }
+                      }
 
                       
-//                    }
-//               });
-//     }
+                   }
+              });
+    }
 
-//     setInterval(getRandValue, 1500);
-// });
+    setInterval(getRandValue, 1500);
+});
 
 
 // $(document).ready(function() {

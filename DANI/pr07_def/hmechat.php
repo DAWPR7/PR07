@@ -1,10 +1,13 @@
 <?php
 session_start();
 
+
+
 if (!isset($_SESSION['usuario'])) {
 
   header('location:index.php');
 }else{
+  $_SESSION['hma_id']='';
   include('chat_select_historial_id.proc.php');
 }
 
@@ -43,13 +46,13 @@ if (!isset($_SESSION['usuario'])) {
         <div class="row" style="margin-top: 20px;">
         <form method="post" id="formPantallaChat">
 
-          <input type="hidden" name="dia_tipo" value="h_ma">
-          <input type="hidden" name="his_id" value="<?php echo $rows ?>">
+          <input type="hidden" name="dia_tipo" value="h_me">
+          <input type="hidden" name="his_id" value="1">
           <input type="hidden" name="ultimo_id" id="ultimo_id" value="0">
         </form>
           <div class="panel panel-primary"> 
             <div class="panel-heading"> 
-              <h3 class="panel-title">Hermano Mayor</h3> 
+              <h3 class="panel-title">Hermano Menor</h3> 
             </div> 
             <div class="panel-body" id="contenido" style="height: 400px; overflow-y: scroll;">
                 <div class="col-md-7 col-md-offset-5">
@@ -68,7 +71,7 @@ if (!isset($_SESSION['usuario'])) {
                 </div> 
             </div>
           <form method="post" id="formChat"> 
-            <input type="hidden" name="dia_tipo" value="h_ma">
+            <input type="hidden" name="dia_tipo" value="h_me">
             <input type="hidden" name="his_id" value="1">
             <input type="hidden" name="ultimo_id" id="ultimo_id" value="0">
             <div class="panel-footer">
@@ -104,42 +107,42 @@ $("#mandar_chat").click(function(){
               });
 })
 
-// $( document ).ready(function() {
+$( document ).ready(function() {
 
-//     function getRandValue(){
+    function getRandValue(){
 
-//             $.ajax({
-//                    type: "POST",
-//                    url: "chat_select.proc.php",
-//                    data: $("#formPantallaChat").serialize(),
-//                    dataType: "json",
-//                    success: function(data){
+            $.ajax({
+                   type: "POST",
+                   url: "chat_select.proc.php",
+                   data: $("#formPantallaChat").serialize(),
+                   dataType: "json",
+                   success: function(data){
 
-//                       for(var attr in data){
-//                         var fecha= data[attr]['dia_fecha'];
-//                         var mensaje= data[attr]['dia_mensaje'];
-//                         var tipo= data[attr]['dia_tipo'];
-//                         var id= data[attr]['dia_id'];
+                      for(var attr in data){
+                        var fecha= data[attr]['dia_fecha'];
+                        var mensaje= data[attr]['dia_mensaje'];
+                        var tipo= data[attr]['dia_tipo'];
+                        var id= data[attr]['dia_id'];
 
-//                         $('#ultimo_id').val(id);
+                        $('#ultimo_id').val(id);
 
-//                         if(tipo!='h_ma'){
+                        if(tipo!='h_me'){
 
-//                           var div='<div class="col-md-7 col-md-offset-5"><div class="panel panel-default"><div class="panel-heading">H.Menor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
-//                           $('#contenido').prepend(div);
-//                         }else{
-//                           var div='<div class="col-md-7"><div class="panel panel-info"><div class="panel-heading">H.Mayor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
-//                           $('#contenido').prepend(div);
-//                         }
-//                       }
+                          var div='<div class="col-md-7 col-md-offset-5"><div class="panel panel-default"><div class="panel-heading">H.Mayor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
+                          $('#contenido').prepend(div);
+                        }else{
+                          var div='<div class="col-md-7"><div class="panel panel-info"><div class="panel-heading">H.Menor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
+                          $('#contenido').prepend(div);
+                        }
+                      }
 
                       
-//                    }
-//               });
-//     }
+                   }
+              });
+    }
 
-//     setInterval(getRandValue, 1500);
-// });
+    setInterval(getRandValue, 1500);
+});
 
 
 // $(document).ready(function() {

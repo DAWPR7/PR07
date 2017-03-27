@@ -1,3 +1,6 @@
+<?php
+require('includes/conexion.proc.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,43 +10,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/login.css" />
-	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-
-	<!-- BOOTSTRAP -->
-
-
-    <!-- CSS -->
-    <link href="assets/css/main.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery.js"></script>
-
-
-
+	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>	
 </head>
 <body background="IMG/login.jpg">
+
 <div class="container">
 <div class="row">
    <div class=""><a href='index.php'><i class='fa fa-arrow-circle-left fa-3x' aria-hidden='true' title='Atrás'></i></a></br></div>
 </div>
-<img src="IMG/menor.png" alt="" class="border-10">
-<div class="container" style="margin-top: 100px;">
-	<div class="col-md-4 col-md-offset-2">
-			<a href="hmenor.php" class="rounded-circle"><img src="IMG/menor.png"  title="Hermano Menor" /></a>
-	</div>
-	<div class="col-md-4">
-			<a href="hmenor.php"><img src="IMG/mayor.png" class="rounded-circle" title="Hermano Menor" /></a>
-	</div>
+
+<div class="card card-inverse" style="margin-top: 150px;">
+
+<form action="denuncia_anonima.proc.php" method="POST">
+	<div class="form-group" >
+    <h3>Si has sido testigo de un caso de bullying denúncialo, es anónimo y seguro.</h3><br>
+    <textarea class="form-control" name="textarea" id="textarea" rows="3" placeholder="Descripción de los hechos, fecha, lugar, personas implicadas..." required></textarea>
+    </div>
+  	
+  	<button type="submit" class="btn btn-primary">Enviar</button>
+</form>
 </div>
-
-
-</div>
-
 <!-- Footer -->
-<div style="margin-top: 120px">
-	<?php
+<?php
 include("footer.php");
 ?>
-</div>
-
 <script src="assets/js/jquery-3.2.0.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/login.js"></script>

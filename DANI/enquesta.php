@@ -21,13 +21,11 @@
 
 <div class="container">
   <div class="page-header">
-    <h1>BULLYIN PRIMER CICLE</h1>      
+    <h1>ENQUESTA - BULLYIN</h1>      
   </div>
-  <p>Etapa:</p>      
-  <p>Curs: </p>      
+  <p id="titulo_etapa">Etapa: </p>      
+  <p id="titulo_curso">Curs: </p>      
 </div>
-
-
 
 <body background="IMG/login.jpg">
   <div class="jumbotron" style="background:transparent !important">

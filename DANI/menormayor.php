@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/login.css" />
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
 
 	<!-- BOOTSTRAP -->
 
@@ -24,14 +25,15 @@
 <div class="row">
    <div class=""><a href='index.php'><i class='fa fa-arrow-circle-left fa-3x' aria-hidden='true' title='Atrás'></i></a></br></div>
 </div>
-<img src="IMG/menor.png" alt="" class="border-10">
 <div class="container" style="margin-top: 100px;">
-	<div class="col-md-4 col-md-offset-2">
-			<a href="hmenor.php" class="rounded-circle"><img src="IMG/menor.png"  title="Hermano Menor" /></a>
-	</div>
-	<div class="col-md-4">
-			<a href="hmenor.php"><img src="IMG/mayor.png" class="rounded-circle" title="Hermano Menor" /></a>
-	</div>
+	<a href="hmenor.php"><div class="col-lg-4 col-lg-offset-1" style="border: 4px solid;
+    border-radius: 25px; background-color: #eeece0; text-align: center">
+			<img style="border-radius: 25px;" src="IMG/menor.png"  title="Hermano Menor"/>
+	</div></a>
+	<a href="hmenor.php"><div class="col-lg-4 col-lg-offset-2" style="border: 4px solid;
+    border-radius: 25px; background-color: #eeece0; text-align: center">
+			<img style="border-radius: 25px;" src="IMG/mayor.png"  title="Hermano Mayor"/>
+	</div></a>
 </div>
 
 
