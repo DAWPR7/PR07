@@ -13,7 +13,7 @@
 						ON `tbl_historial`.`hme_id` = `tbl_hmenor`.`hme_id`
 					WHERE `tbl_hmenor`.`hme_estado` = 'ocupado'";
 			$sh_terapias = mysqli_query($conexion, $sh_terapias_sql);
-			while($terapia = mysqli_fetch_array($sh_terapias))
+			/*while($terapia = mysqli_fetch_array($sh_terapias))
 			{
 				echo "<table border>";
 				echo "<tr>
@@ -73,6 +73,7 @@
 				echo "</tr>";
 				echo "</table>";
 
-			}
+			}*/
+			echo json_encode(mysqli_fetch_array($sh_terapias,MYSQL_ASSOC));
 		 ?>
 	</table>
