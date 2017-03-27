@@ -68,7 +68,8 @@ $proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$
 			$resultado4 = mysqli_fetch_array($proceso4);
 			if (!empty($resultado4)){
 				$adm_id=$resultado4['adm_id'];
-				header("location: peneadmin.php");
+				$_SESSION['admin']=$adm_id;
+				header("location: administrador.php");
 			}
 		}
 	}
