@@ -16,7 +16,7 @@
 		</tr>
 		
 		<tr>
-			<td><a href="#">Seguimiento de casos</td>
+			<td><a href="s_casos.php">Seguimiento de casos</td>
 		</tr>
 	</table>
 	<?php 
