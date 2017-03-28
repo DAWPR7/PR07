@@ -31,16 +31,6 @@ require_once("includes/conexion.proc.php");
         <script type="text/javascript" src="assets/js/tableExport.min.js"></script>
         <script src="//oss.maxcdn.com/bootbox/4.2.0/bootbox.min.js"></script>
 
-
-
-
-
-
-
-
-
-
-
 </head>
 <body background="IMG/login.jpg">
 
@@ -181,8 +171,6 @@ require_once("includes/conexion.proc.php");
                         <!-- PESTAÑA TERAPIAS EN CURSO -->
                         <div class="tab-pane fade" id="tab4success">
 
-                          <!-- <table id="tbl_terapias" data-group-by-field="proy_id" data-height="610" data-cookie="true" data-cookie-id-table="uno"  data-toolbar="#toolbar2"></table> -->
-
                           <table id="tbl_terapias" data-group-by-field="proy_id" data-height="610" data-cookie="true" data-cookie-id-table="uno"  data-toolbar="#toolbar2"></table>
 
 
@@ -248,6 +236,4 @@ require_once("includes/conexion.proc.php");
 </script>
 </body>
 <script type="text/javascript" src="tablasJs/tbl_terapias.js"></script>
-<!-- ENLACE A LAS TABLAS -->
-        <!-- <scrip type="text/javascript" src="tablasJs/tbl_resultado.js"></script> -->
 </html>
