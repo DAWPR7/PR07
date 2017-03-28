@@ -74,6 +74,10 @@
 				echo "</table>";
 
 			}*/
-			echo json_encode(mysqli_fetch_array($sh_terapias,MYSQL_ASSOC));
+			while($terapia = mysqli_fetch_array($sh_terapias,MYSQL_ASSOC))
+			{
+				$te_array[]=$terapia;
+			}
+			echo json_encode($te_array);
 		 ?>
 	</table>
