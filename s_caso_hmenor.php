@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 	//Página que muestra las fechas del último mensaje del hermano menor y del hermano mayor
 	require_once("includes/conexion.proc.php");
 	extract($_POST);
@@ -27,7 +27,7 @@
 				{
 					while($last_msg_hmenor = mysqli_fetch_array($last_msg_hmenor_query))
 					{
-						$date_last_hme = $last_msg_hmenor['dia_fecha'];
+						$msg_h[0]= "hmenor:".$last_msg_hmenor['dia_fecha'];
 					}
 					//echo $date_last_hme;
 				}//end last_msg_hmenor
@@ -35,8 +35,9 @@
 				{
 					while ($last_msg_hmayor = mysqli_fetch_array($last_msg_hmayor_query))
 					{
-						$date_last_hma = $last_msg_hmayor['dia_fecha'];
+						$msg_h[1] = "hmayor:".$last_msg_hmayor['dia_fecha'];
 					}
+					echo json_encode($msg_h,MYSQL_ASSOC);
 				}
 				else 
 				{
@@ -50,7 +51,7 @@
 											location.href='en_terapia.php';</script>";
 		}
  ?>
- 	<table borde>
+ 	<!--<table borde>
  		<tr>
  			<td>
  				Fecha del último mensaje del hermano menor:
@@ -67,4 +68,4 @@
  				<?php echo $date_last_hma;?>
  			</td>
  		</tr>
- 	</table>
+ 	</table>-->
