@@ -8,10 +8,29 @@ require_once("includes/conexion.proc.php");
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/login.css" />
   <link rel="stylesheet" href="orientacion-style.css" />
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+  <!-- CSS -->
+      <link href="assets/css/main.css" rel="stylesheet">
+      <script src="http://code.jquery.com/jquery.js"></script>
+  <!-- BOOTSTRAP -->
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+  <!-- BOOTSTRAP TABLE -->
+        <link rel="stylesheet" href="assets/css/bootstrap/bootstrap-table.css">
+        <script type="text/javascript" src="assets/js/bootstrap-table.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap-table-ca-ES.js"></script>
+  <!-- BOOTSTRAP TABLE COOKIE -->
+        <script type="text/javascript" src="assets/js/bootstrap-table-cookie.js"></script>
+
+  <!-- BOOTSTRAP TABLE EXPORT -->
+        <script type="text/javascript" src="assets/js/bootstrap-table-export.js"></script>
+        <script type="text/javascript" src="assets/js/tableExport.min.js"></script>
+        <script src="//oss.maxcdn.com/bootbox/4.2.0/bootbox.min.js"></script>
+
 </head>
 <body background="IMG/login.jpg">
 
@@ -24,6 +43,8 @@ require_once("includes/conexion.proc.php");
           <div class="col-md-12">
 
             <div class="panel with-nav-tabs panel-success">
+
+                <!-- MENU -->
                 <div class="panel-heading">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#tab1success" data-toggle="tab">Solicitudes Menor</a></li>
@@ -39,6 +60,8 @@ require_once("includes/conexion.proc.php");
                             </li>
                         </ul>
                 </div>
+
+                <!-- CONTENEDOR PESTAÑAS -->
                 <div class="panel-body">
                     <div class="tab-content">
                         <!-- PESTAÑA SOLICITUD HERMANO MENOR -->
@@ -62,25 +85,20 @@ require_once("includes/conexion.proc.php");
                                         <label for="rpass">Repetir contraseña</label>
                                         <input type="password" class="form-control" name="rpass" id="rpass" placeholder="Repite la contraseña">
                                 </div>
-
-
-
-
                                 <div class="form-group col-md-6">
                                         <label for="notes">Notas</label>
                                         <textarea class="form-control" name="notes" id="notes" rows="6">Anotaciones sobre el hermano mayor</textarea><br/>
                                         <button type="submit" class="btn btn-primary" onclick="return val_addhmayor();">Añadir</button>
                                 </div>
-
                             </form>
                         </div>
+
 
 
                         <!-- PESTAÑA NUEVA TERAPIA -->
                         <div class="tab-pane fade" id="tab3success">
                           <!-- Consultas a la BD para poder escoger hm, HM y psicólogo -->
                           <?php
-
                             //Creamos la consulta para la busqueda del hermano menor que tenga estado disponible:
                             $hmenor_sql="SELECT * FROM `tbl_hmenor` LEFT JOIN `tbl_user` ON `tbl_user`.`user_id`=`tbl_hmenor`.`user_id` WHERE `hme_estado` = 'libre'";
                             $hmayor_sql="SELECT * FROM `tbl_hmayor` LEFT JOIN `tbl_user` ON `tbl_user`.`user_id`=`tbl_hmayor`.`user_id` WHERE `hma_estado` = 'libre'";
@@ -108,10 +126,8 @@ require_once("includes/conexion.proc.php");
                                       }
                                     ?>
                                 </select><br/>
-                            <!-- </div> -->
 
                             <!-- ESCOGER HERMANO MAYOR -->
-                            <!-- <div class="form-group col-md-6"> -->
                               <label for="hmayor">Hermano mayor</label>
                                   <select class="form-control" name="hmayor" id="hmayor">
                                     <option value="0" selected>Seleccione al hermano mayor</option>
@@ -125,10 +141,8 @@ require_once("includes/conexion.proc.php");
                                     }
                                   ?>
                                 </select><br/>
-                            <!-- </div> -->
 
                             <!-- ESCOGER PSICÓLOGO -->
-                            <!-- <div class="form-group col-md-6"> -->
                               <label for="psico">Psicólogo</label>
                               <select class="form-control" name="psico" id="psico">
                                 <option value="0" selected>Seleccione un psicólogo</option>
@@ -150,12 +164,17 @@ require_once("includes/conexion.proc.php");
                               <textarea class="form-control" id="nota" name="nota" rows="6">Notas sobre la terapia</textarea><br/>
                               <button type="submit" class="btn btn-primary" onclick="return val_addhmayor();">Añadir</button>
                             </div>
-
                         	</form>
                         </div>
 
 
-                        <div class="tab-pane fade" id="tab4success">Ventana terapias en curso</div>
+                        <!-- PESTAÑA TERAPIAS EN CURSO -->
+                        <div class="tab-pane fade" id="tab4success">
+
+                          <table id="tbl_terapias" data-group-by-field="proy_id" data-height="610" data-cookie="true" data-cookie-id-table="uno"  data-toolbar="#toolbar2"></table>
+
+
+                        </div>
                         <div class="tab-pane fade" id="tab5success">Seguimiento de casos</div>
                         <div class="tab-pane fade" id="tab6success">Extra 1</div>
                     </div>
@@ -175,44 +194,46 @@ require_once("includes/conexion.proc.php");
 <script src="assets/js/jquery-3.2.0.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/login.js"></script>
+
+<!-- VALIDACIONES AÑADIR HERMANO MAYOR -->
 <script type="text/javascript">
-  function val_addhmayor()
-  {
+  function val_addhmayor() {
     var error="";
-    if(document.getElementById('hm_mat').value=="")
-    {
+    if(document.getElementById('hm_mat').value=="") {
       error+="La matrícula del alumno no puede estar vacía \n";
 
       document.getElementById('hm_mat').style.borderColor="red";
-    }
-    else if(isnum(document.getElementById('hm_mat').value))
-        {
+    } else if(isnum(document.getElementById('hm_mat').value)) {
           error+="error, la matrícula debe ser un número";
         }
-    if(document.getElementById('pass').value=="")
-    {
+    if(document.getElementById('pass').value=="") {
       error+="La contraseña del alumno no puede estar vacía \n";
       document.getElementById('pass').style.borderColor="red";
     }
-    if(document.getElementById('pass').value!=document.getElementById('rpass').value)
-    {
+    if(document.getElementById('pass').value!=document.getElementById('rpass').value) {
       error+="Las contraseñas no coinciden \n";
       document.getElementById('rpass').style.borderColor="red";
       document.getElementById('pass').style.borderColor="red";
     }
-    if(document.getElementById('notes').value=="Anotaciones sobre el hermano mayor")
-    {
+    if(document.getElementById('notes').value=="Anotaciones sobre el hermano mayor") {
       error+="Debe introducir alguna nota sobre el hermano mayor";
       document.getElementById('notes').style.borderColor="red";
     }
-    if(error!=""){
+    if(error!="") {
       alert(error);
       return false;
-    }
-    else{
+    } else {
       return true;
     }
   }
 </script>
+
+<!-- VALIDACIONES VER TERAPIAS -->
+<script type="text/javascript">
+  function add_note() {
+    document.getElementById("ch_note").style.display="block";
+  }
+</script>
 </body>
+<script type="text/javascript" src="tablasJs/tbl_terapias.js"></script>
 </html>
