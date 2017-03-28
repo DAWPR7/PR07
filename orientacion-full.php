@@ -66,7 +66,34 @@ require_once("includes/conexion.proc.php");
                     <div class="tab-content">
                         <!-- PESTAÑA SOLICITUD HERMANO MENOR -->
                         <div class="tab-pane fade in active" id="tab1success">
-                          Hola
+                          <?php
+                            $sh_ph_sql = "SELECT * FROM `tbl_hmenor` LEFT JOIN `tbl_user` ON `tbl_user`.`user_id`=`tbl_hmenor`.`user_id` WHERE `hme_estado` = 'pendiente'";
+                          	$sh_ph_query = mysqli_query($conexion,$sh_ph_sql);
+
+                            if($sh_ph_query) {
+                          		while ($sh_ph = mysqli_fetch_array($sh_ph_query)) {
+
+                                echo "<table class='table'>";
+                                echo "<thead>
+                                            <tr>
+                                                <th>Matrícula</th>
+                                                <th>Motivo</th>
+                                                <th>¿Aprobar?</th>
+                                                <th>¿Eliminar?</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>". $sh_ph['user_matricula']."</td>
+                                                <td>".$sh_ph['hme_notas']."</td>
+                                                <td><a class='btn mini blue-stripe' href='ap_solicitud.proc.php?id=".$sh_ph['hme_id']."'>Aprobar</a></td>
+                                                <td><a class='btn mini blue-stripe' role='button' href='#'>Eliminar</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>";
+                              }
+                      	   }
+                          ?>
 
                         </div>
 
@@ -170,12 +197,40 @@ require_once("includes/conexion.proc.php");
 
                         <!-- PESTAÑA TERAPIAS EN CURSO -->
                         <div class="tab-pane fade" id="tab4success">
-
                           <table id="tbl_terapias" data-group-by-field="proy_id" data-height="610" data-cookie="true" data-cookie-id-table="uno"  data-toolbar="#toolbar2"></table>
+                        </div>
 
+
+                        <!-- PESTAÑA SEGUIMIENTO HERMANO MENOR -->
+                        <div class="tab-pane fade" id="tab5success">
+                          <form action="" method="GET" id="formulario_seguimiento">
+                            <div class="form-group col-md-4">
+                              <label for="hmenor">Hermano menor</label>
+                                <select class="form-control" name="hmenor" id="select_hmenor">
+                                    <option value="0" selected>Seleccione al hermano menor</option>
+                                    <?php
+                                    $hmenor_sql="SELECT * FROM `tbl_hmenor` LEFT JOIN `tbl_user` ON `tbl_user`.`user_id`=`tbl_hmenor`.`user_id` WHERE `hme_estado` = 'ocupado'";
+                                		//Petición a la BBDD
+                                		$hmenor_query = mysqli_query($conexion,$hmenor_sql);
+                          						if(mysqli_num_rows($hmenor_query)>=1) {
+                          							while($hmenor = mysqli_fetch_array($hmenor_query)) {
+                          								echo "<option value=".$hmenor['hme_id'].">".$hmenor['user_matricula']."</option>";
+                          							}
+                          						} else {
+                          							echo "<option value='1'>No hay casos activos</option>";
+                          						}
+                          					?>
+                                </select><br/>
+                                <!-- <button type="submit" class="btn btn-primary" id="mostrar_seguimiento">Seleccionar</button> -->
+                              </div>
+
+                              <div class="form-group col-md-12" id="div_oculto">
+
+                            </div>
+
+                          </form>
 
                         </div>
-                        <div class="tab-pane fade" id="tab5success">Seguimiento de casos</div>
                         <div class="tab-pane fade" id="tab6success">Extra 1</div>
                     </div>
                 </div>
@@ -189,11 +244,69 @@ require_once("includes/conexion.proc.php");
     // require_once("footer.php");
   ?>
 
+  <!-- BOTON ABRIR MODAL -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Seleccionar</button> -->
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- SCRIPT VENTANA MODAL SEGUIMIENTO HERMANO MENOR -->
+<!-- <script>
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+  })
+</script> -->
 
 
 <!-- <script src="assets/js/jquery-3.2.0.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/login.js"></script> -->
+
+<script type="text/javascript">
+$("#select_hmenor").change(function(){
+              hme_id = $("#select_hmenor").val();
+              $.ajax({
+                   type: "POST",
+                   url: "s_caso_hmenor.php?hme_id="+hme_id,
+                   data: $("#formulario_seguimiento").serialize(), // Adjuntar los campos del formulario enviado.
+                   dataType: "json",
+                   success: function(data){
+
+                     var tabla = "<table class='table'><thead><tr><th>Último msj. mayor</th><th>Último msj. menor</th></tr></thead><tbody><tr><td id='tdmayor'>"+fecha_hmayor+"</td><td id='tdmenor'>"+fecha_hmenor+"</td></tr></tbody></table>";
+
+                     $('#div_oculto').html(tabla);
+
+                     for(var attr in data){
+                       var fecha_hmenor= data[attr]['hmenor'];
+                       var fecha_hmayor= data[attr]['hmayor'];
+                       if (fecha_hmenor != null){
+                         $('#tdmenor').html(fecha_hmenor);
+                       } else {
+                         $('#tdmayor').html(fecha_hmayor);
+                       }
+                     }
+                   }
+              });
+})
+</script>
 
 <!-- VALIDACIONES AÑADIR HERMANO MAYOR -->
 <script type="text/javascript">
