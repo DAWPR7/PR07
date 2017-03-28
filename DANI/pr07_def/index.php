@@ -32,6 +32,9 @@
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar sesión</button>
                 <hr>
                 <p>¿No tienes cuenta? <a href="registro_menor.php">Regístrate</a></p>
+                <p style="color:red; text-align: center;"><?php if(isset($_REQUEST['error'])){echo $_REQUEST['error'];
+
+                };  ?></p>
             </form><!-- /form -->
             <!--<a href="#" class="forgot-password">
                 Forgot the password?
@@ -43,6 +46,10 @@
 <!-- Footer -->
 <?php
 include("footer.php");
+
+
+
+
 ?>
 <script src="assets/js/jquery-3.2.0.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>

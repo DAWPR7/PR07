@@ -60,7 +60,8 @@ $proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$
 			$resultado3 = mysqli_fetch_array($proceso3);
 			if (!empty($resultado3)){
 				$psi_id=$resultado3['psi_id'];
-				header("location: penepsicologo.php");
+				$_SESSION['psico']=$adm_id;
+				header("location: orientacion-full.php");
 			}
 
 
@@ -73,6 +74,12 @@ $proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$
 				header("location: administrador.php");
 			}
 		}
+	}else{
+
+
+		header("location: index.php?error=Usuario o contraseña erróneas");
+
+
 	}
 		
 
