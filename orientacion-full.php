@@ -191,9 +191,9 @@ require_once("includes/conexion.proc.php");
 
 
 
-<script src="assets/js/jquery-3.2.0.min.js"></script>
+<!-- <script src="assets/js/jquery-3.2.0.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/login.js"></script>
+<script src="assets/js/login.js"></script> -->
 
 <!-- VALIDACIONES AÑADIR HERMANO MAYOR -->
 <script type="text/javascript">
