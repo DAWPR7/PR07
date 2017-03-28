@@ -31,7 +31,7 @@ function comprobarClave(){
 <div class="card card-container">
                    
             <p id="profile-name" class="profile-name-card"></p>
-            <form action="registro_menor.proc.php" method="POST" class="form-signin" name="f1">
+            <form action="registro_menor.proc.php" method="POST" class="form-signin" name="f1" onsubmit="comprobarClave">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus>
                 <input type="password" name="password1" id="inputPassword" class="form-control" placeholder="Contraseña" required>

@@ -1,5 +1,5 @@
 <?php
-include("conexion.proc.php");
+include("includes/conexion.proc.php");
 
 $email= $_POST['email'];
 $password1= $_POST['password1'];
