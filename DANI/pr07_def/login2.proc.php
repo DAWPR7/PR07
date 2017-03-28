@@ -1,18 +1,18 @@
 <?php
 	session_start();
-$email=$_POST['email'];
+$user_matricula=$_POST['email'];
 // ECHO "   ---   ";
 $password=$_POST['password'];
 
 include("includes/conexion.proc.php");
 
-$proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$email' AND user_pwd = '$password'");
+$proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$user_matricula' AND user_pwd = '$password'");
 	
 	
 
 	if(mysqli_num_rows($proceso)>0){
 
-		// echo " LOGIN CORRECTO";
+		echo " LOGIN CORRECTO";
 
 		// echo " DENTRO DE PROCESO  ";
 
@@ -57,20 +57,25 @@ $proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$
 				header("location: hmechat.php");
 			}
 			$proceso3= $conexion->query("SELECT psi_id FROM tbl_psico WHERE user_id='$user_id'");
+
 			$resultado3 = mysqli_fetch_array($proceso3);
 			if (!empty($resultado3)){
 				$psi_id=$resultado3['psi_id'];
-				$_SESSION['psico']=$adm_id;
+
+				$_SESSION['psico']=$psi_id;
+				
 				header("location: orientacion-full.php");
 			}
 
 
 
 			$proceso4= $conexion->query("SELECT adm_id FROM tbl_admin WHERE user_id='$user_id'");
+
 			$resultado4 = mysqli_fetch_array($proceso4);
 			if (!empty($resultado4)){
 				$adm_id=$resultado4['adm_id'];
 				$_SESSION['admin']=$adm_id;
+
 				header("location: administrador.php");
 			}
 		}

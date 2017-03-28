@@ -1,6 +1,14 @@
 <?php
-require_once("includes/conexion.proc.php");
+session_start();
+
+include("includes/conexion.proc.php");
+  if (!isset($_SESSION['psico'])) 
+  {
+    header('location:index.php');
+  }
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
