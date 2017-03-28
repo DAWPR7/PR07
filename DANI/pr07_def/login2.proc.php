@@ -39,6 +39,7 @@ $proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$
 
 			if (!empty($resultado2)){
 				$hme_id=$resultado2['hme_id'];
+				$_SESSION['hme_id']=$hme_id;
 			}
 
 			// ECHO "  hermano menor: ".$hme_id;
