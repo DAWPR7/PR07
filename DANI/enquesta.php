@@ -21,7 +21,7 @@
 
 <div class="container">
   <div class="page-header">
-    <h1>ENQUESTA - BULLYIN</h1>      
+    <h1>ENQUESTA - BULLYING</h1>      
   </div>
   <p id="titulo_etapa">Etapa: </p>      
   <p id="titulo_curso">Curs: </p>      
@@ -90,7 +90,7 @@
           </label>
           <div class="col-md-offset-2 col-md-3">
             <select class="form-control" name="for2_alu_id" id="pre_7">
-              <option selected disabled>Compayns</option>
+              <option selected disabled>Companys</option>
             </select>
           </div> 
         </div>
@@ -167,7 +167,7 @@
           <label class="col-md-offset-2 col-md-12" for="formulario">Alumne/-na que pateix Bullying </label>
           <div class="col-md-offset-2 col-md-3">
             <select class="form-control" name="for2_alu_id" id="pre_8">
-              <option selected disabled>Compayns</option>
+              <option selected disabled>Companys</option>
             </select>
           </div> 
         </div>
@@ -244,7 +244,7 @@
           <label class="col-md-offset-2 col-md-12" for="formulario">Alumne/-na que pateix Bullying </label>
           <div class="col-md-offset-2 col-md-3">
             <select class="form-control" name="for2_alu_id" id="pre_9">
-              <option selected disabled>Compayns</option>
+              <option selected disabled>Companys</option>
             </select>
           </div> 
         </div>
