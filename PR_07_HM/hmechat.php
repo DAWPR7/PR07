@@ -47,7 +47,7 @@ if (!isset($_SESSION['usuario'])) {
         <form method="post" id="formPantallaChat">
 
           <input type="hidden" name="dia_tipo" value="h_me">
-          <input type="hidden" name="his_id" value="1">
+          <input type="hidden" name="his_id" <?php echo 'value="'.$rows.'"'?>>
           <input type="hidden" name="ultimo_id" id="ultimo_id" value="0">
         </form>
           <div class="panel panel-primary"> 

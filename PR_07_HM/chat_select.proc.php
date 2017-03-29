@@ -7,7 +7,7 @@ extract($_REQUEST);
 
 
 
-// ----- SQL PARA SELECCIONAR REGISTROS EN LA TABLA DIÁLOGO:
+// ----- SQL PARA INSERTAR REGISTROS EN LA TABLA DIÁLOGO:
 
 
 $selectRespuesta = $databaseConnection->prepare("SELECT * FROM tbl_dialogo WHERE his_id=:his_id AND dia_id>:dia_id");
@@ -15,6 +15,9 @@ $selectRespuesta = $databaseConnection->prepare("SELECT * FROM tbl_dialogo WHERE
               $selectRespuesta->bindParam(':his_id', $his_id);
               $selectRespuesta->bindParam(':dia_id', $ultimo_id);
               $selectRespuesta->execute();
+
+              // echo $his_id;
+              // echo $ultimo_id;
 
               $rows=$selectRespuesta->fetchAll(PDO::FETCH_ASSOC);
             
