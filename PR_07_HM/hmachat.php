@@ -29,6 +29,7 @@ if(empty($rows)){
 
     <!-- CSS -->
     <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/login.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery.js"></script>
 
   <!-- ENLACES JS -->
