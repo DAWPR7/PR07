@@ -1,19 +1,21 @@
 <?php
 session_start();
 
-$titulo = "Hermano Mayor";
+$titulo="Hermano Mayor";
 
 if (!isset($_SESSION['usuario'])) {
 
   header('location:index.php');
 }else{
-  $_SESSION['hme_id']='';
+  $hmenor_ini='';
+  $hmayor_ini=$_SESSION['hma_id'];
+  // $_SESSION['hme_id']='';
   include('chat_select_historial_id.proc.php');
 }
+
 if(empty($rows)){
   header('location:espera.php');
 }
-
 ?>
 
 <!DOCTYPE html>

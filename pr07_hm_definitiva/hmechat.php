@@ -1,16 +1,15 @@
 <?php
 session_start();
 
-$titulo = "Hermano Menor";
+$titulo="Hermano Menor";
 
 if (!isset($_SESSION['usuario'])) {
-
   header('location:index.php');
-}else{
-  $_SESSION['hma_id']='';
+} else {
+  $hmayor_ini='';
+  $hmenor_ini=$_SESSION['hme_id'];
   include('chat_select_historial_id.proc.php');
 }
-
 ?>
 
 <!DOCTYPE html>
