@@ -37,11 +37,11 @@ if(empty($rows)){
 
 </head>
 
-<div class="container">
-  <div class="page-header">
-    <h1>HERMANO MAYOR</h1>      
-  </div>    
-</div>
+<div class="page-header" style="margin-top: 0px;">
+    <div class="container">
+      <h1>HERMANO MAYOR</h1>  
+    </div>    
+  </div>
 
 <body background="IMG/login.jpg">
   <div class="jumbotron" style="background:transparent !important">
@@ -60,7 +60,7 @@ if(empty($rows)){
               <h3 class="panel-title">Hermano Mayor</h3> 
             </div> 
             <div class="panel-body" id="contenido" style="height: 400px; overflow-y: scroll;">
-                <div class="col-md-7 col-md-offset-5">
+                <!-- <div class="col-md-7 col-md-offset-5">
                   <div class="panel panel-default">
                     <div class="panel-heading">H.Menor - fecha
                       <div>TEXTO hola hola hola hola</div>
@@ -73,7 +73,7 @@ if(empty($rows)){
                       <div>TEXTO hola hola hola hola</div>
                     </div>
                   </div>
-                </div> 
+                </div>  -->
             </div>
           <form method="post" id="formChat"> 
             <input type="hidden" name="dia_tipo" value="h_ma">
@@ -97,6 +97,10 @@ if(empty($rows)){
   </div>
 
 <script type="text/javascript">
+
+$('#contenido').scrollTop($('#contenido')[0].scrollHeight);
+
+
       
 $("#mandar_chat").click(function(){
               $.ajax({
@@ -133,12 +137,14 @@ $( document ).ready(function() {
 
                         if(tipo!='h_ma'){
 
-                          var div='<div class="col-md-7 col-md-offset-5"><div class="panel panel-default"><div class="panel-heading">H.Menor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
-                          $('#contenido').prepend(div);
+                          var div='<div class="col-md-7 col-md-offset-5"><div class="panel panel-default"><div class="panel-heading">H.Menor: '+fecha+'<div>'+mensaje+'</div></div></div></div>';
+                          $('#contenido').append(div);
                         }else{
-                          var div='<div class="col-md-7"><div class="panel panel-info"><div class="panel-heading">H.Mayor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
-                          $('#contenido').prepend(div);
+                          var div='<div class="col-md-7"><div class="panel panel-info"><div class="panel-heading">H.Mayor: '+fecha+'<div>'+mensaje+'</div></div></div></div>';
+                          $('#contenido').append(div);
                         }
+
+                        $('#contenido').scrollTop($('#contenido')[0].scrollHeight - $('#contenido')[0].clientHeight);
                       }
 
                       

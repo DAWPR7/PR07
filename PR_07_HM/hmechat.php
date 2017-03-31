@@ -1,8 +1,5 @@
 <?php
 session_start();
-
-
-
 if (!isset($_SESSION['usuario'])) {
 
   header('location:index.php');
@@ -16,7 +13,7 @@ if (!isset($_SESSION['usuario'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hermano Mayor</title>
+	<title>Hermano Menor</title>
 	<meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,12 +28,30 @@ if (!isset($_SESSION['usuario'])) {
     <!-- <script src="jsFunction/function.js"></script> -->
 
 </head>
-
-<div class="container">
-  <div class="page-header">
-    <h1>HERMANO MAYOR</h1>      
-  </div>    
+<div class="page-header" style="margin-top: 0px;">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-2 text-center" style="background-color: red;"> 
+        <a href='index.php'><i class='fa fa-arrow-circle-left fa-3x' aria-hidden='true' title='Atrás'></i></a>
+      </div>
+      <div  class="col-md-8 text-center">
+        <h1>HERMANO MENOR</h1>
+      </div>
+      <div class="col-md-2 text-center">
+        <a href='cerrar_sesion.php'> Cerrar Sesión</a></br>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- 
+
+  <div class="page-header" style="margin-top: 0px;">
+    <a href='index.php'><i class='fa fa-arrow-circle-left fa-3x' aria-hidden='true' title='Atrás'></i></a></div>
+  
+    <div class="container">
+      <h1>HERMANO MENOR</h1>  
+    </div>    
+  </div> -->
 
 <body background="IMG/login.jpg">
   <div class="jumbotron" style="background:transparent !important">
@@ -55,7 +70,7 @@ if (!isset($_SESSION['usuario'])) {
               <h3 class="panel-title">Hermano Menor</h3> 
             </div> 
             <div class="panel-body" id="contenido" style="height: 400px; overflow-y: scroll;">
-                <div class="col-md-7 col-md-offset-5">
+                <!-- <div class="col-md-7 col-md-offset-5">
                   <div class="panel panel-default">
                     <div class="panel-heading">H.Menor - fecha
                       <div>TEXTO hola hola hola hola</div>
@@ -68,7 +83,7 @@ if (!isset($_SESSION['usuario'])) {
                       <div>TEXTO hola hola hola hola</div>
                     </div>
                   </div>
-                </div> 
+                </div>  -->
             </div>
           <form method="post" id="formChat"> 
             <input type="hidden" name="dia_tipo" value="h_me">
@@ -134,6 +149,7 @@ $( document ).ready(function() {
                           var div='<div class="col-md-7"><div class="panel panel-info"><div class="panel-heading">H.Menor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
                           $('#contenido').prepend(div);
                         }
+                        $('#contenido').scrollTop($('#contenido')[0].scrollHeight - $('#contenido')[0].clientHeight);
                       }
 
                       
@@ -144,38 +160,6 @@ $( document ).ready(function() {
     setInterval(getRandValue, 1500);
 });
 
-
-// $(document).ready(function() {
-//     function getRandValue(){
-//         value = $('#value').text();
-//         //var dataString = 'value='+value;
-
-//         $.ajax({
-//             type: "POST",
-//             url: "add.php",
-//             //data: dataString,
-//             success: function(data) {
-//                 $('#value').text(data);
-//             }
-//         });
-//     }
-
-//     setInterval(getRandValue, 3000);
-// });
-
-
-
-
-
-
-
-
-
-// <div class="panel panel-default">
-//                     <div class="panel-heading">H.Menor - fecha
-//                       <div>TEXTO hola hola hola hola</div>
-//                     </div>
-//                   </div>
 
 
 </script>

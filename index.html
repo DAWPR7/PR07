@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml; charset=utf-8" />
+<title></title>
+<script type="text/javascript">
+function fnc(c_entrada, val_entrada, bloque_conversacion, evt){
+
+if (evt == undefined) {
+//document.getElementById(bloque_conversacion).inner HTML += val_entrada +'<br />';
+document.getElementById('scr').scrollIntoView(true );
+document.getElementById(c_entrada).value = '';
+
+} else {
+
+tecla=(evt) ? evt.keyCode : evt.charCode;
+if(tecla==13) {
+// document.getElementById(bloque_conversacion).inner HTML += val_entrada +'<br />';
+document.getElementById('scr').scrollIntoView(true );
+document.getElementById(c_entrada).value = '';
+}
+}
+}
+
+
+
+function scroll() {
+document.getElementById('nueva_entrada').addEventL istener('keyup', function(event) {
+fnc(this.id, this.value, 'dialogo', event);
+}, 
+false);
+
+document.getElementById('insertar').addEventListen er('click', function() {
+fnc('nueva_entrada', document.getElementById('nueva_entrada').value, 'dialogo');
+}, 
+false);
+
+}
+
+window.onload = scroll; 
+</script>
+</head>
+<body>
+
+<div id="scroll" style="height: 5em; width: 30em; overflow: scroll;border: 1px solid blue;">
+<div id="dialogo" style="overflow: none;">
+
+</div>
+<span id="scr"></span>
+</div>
+
+<form>
+<textarea id="nueva_entrada" rows="5" cols="20"></textarea>
+
+<input type="button" value="Insertar" id="insertar" >
+</form>
+
+</body>
+</html>
