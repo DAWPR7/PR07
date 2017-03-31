@@ -32,9 +32,9 @@ if (!isset($_SESSION['usuario'])) {
 </head>
 
 <div class="container">
-  <div class="page-header">
-    <h1>HERMANO MAYOR</h1>
-  </div>
+  <?php
+  include "includes/titulo.php";
+  ?>
 </div>
 
 <body background="img/login.jpg">
