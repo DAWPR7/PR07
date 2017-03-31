@@ -25,9 +25,9 @@ $titulo = "Denuncia anónima";
 <body background="img/login.jpg">
 
     <div class="container">
-          <?php
-          include "includes/titulo.php";
-          ?>
+      <div class="page-header">
+        <h1><?php echo $titulo; ?><span class="pull-right">&nbsp;<a href='index.php'><i class="fa fa-arrow-circle-left" aria-hidden="true" title='Atrás'></i></a></span></h1><br/>
+      </div>
         <div class="row">
 
             <div class="col-md-12">

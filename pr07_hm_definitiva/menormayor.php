@@ -4,15 +4,9 @@ session_start();
 $titulo = "Hermano Mayor / Menor";
 
 if (!isset($_SESSION['usuario'])) {
-
   header('location:index.php');
 }
-
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>

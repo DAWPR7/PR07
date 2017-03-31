@@ -13,7 +13,7 @@
 
 <div class="container">
 	<div class="page-header">
-	  <h1>Hermano Mayor  <span class="pull-right"><a href="denuncia_anonima.php"><img src="img/button_anonima.png"></a></span></h1><br/>
+	  <h1>Hermano Mayor &nbsp;<a href='info.php'><i class="fa fa-info-circle" aria-hidden="true" title='Información'></i></a><span class="pull-right"><a href="denuncia_anonima.php"><img src="img/button_anonima.png"></a></span></h1><br/>
 	</div>
 <!-- <div class="row" style="text-align: right;">
   <div class="col-md-offset-8"><a href="denuncia_anonima.php"><img src="img/button_anonima.png"></div></a>
