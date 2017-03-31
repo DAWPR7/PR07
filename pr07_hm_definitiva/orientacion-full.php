@@ -234,7 +234,15 @@ if (!isset($_SESSION['psico'])) {
                                 </select><br/>
                                 <!-- <button type="submit" class="btn btn-primary" id="mostrar_seguimiento">Seleccionar</button> -->
                               </div>
-
+                              </form>
+                               <form action="upd_notes.proc.php" method="POST">
+                                  <div class="form-group col-md-12">
+                                      <input type="hidden" id="hmeid" name="hmeid" />
+                                      <input type="text" id="notas" name="notas"/>
+                                      <br/>
+                                      <input type="submit" class="btn btn-secondary" value="añadir nota" />
+                                  </div>
+                               </form>
                               <div class="form-group col-md-12" id="div_oculto">
 
                             </div>
@@ -308,12 +316,19 @@ $("#select_hmenor").change(function(){
                      for(var attr in data){
                        var fecha_hmenor= data[attr]['hmenor'];
                        var fecha_hmayor= data[attr]['hmayor'];
+                       var notas = data[attr]['notes'];
+                       
                        if (fecha_hmenor != null){
                          $('#tdmenor').html(fecha_hmenor);
                        } else {
                          $('#tdmayor').html(fecha_hmayor);
                        }
+                        if(notas!=null){
+                        $('#notas').val(notas);
+                         $('#hmeid').val(hme_id);
+                      }
                      }
+                    
                    }
               });
 })
