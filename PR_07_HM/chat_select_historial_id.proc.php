@@ -7,7 +7,7 @@ include "includes/conexion_bd.php";
 
 // echo 'HME '. $_SESSION['hme_id'];
 
-if (!empty($_SESSION['hma_id'])) {
+if (!empty($hmenor_ini)) {
 
 	$sentencia= 'hma_id='.$_SESSION['hma_id'];
 

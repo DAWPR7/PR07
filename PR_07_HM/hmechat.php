@@ -2,9 +2,11 @@
 session_start();
 if (!isset($_SESSION['usuario'])) {
 
+
   header('location:index.php');
 }else{
-  $_SESSION['hma_id']='';
+  $hmayor_ini='';
+  $hmenor_ini=$_SESSION['hme_id'];
   include('chat_select_historial_id.proc.php');
 }
 
