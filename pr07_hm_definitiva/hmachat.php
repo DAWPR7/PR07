@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-
+$titulo = "Hermano Mayor";
 
 if (!isset($_SESSION['usuario'])) {
 
@@ -10,7 +10,6 @@ if (!isset($_SESSION['usuario'])) {
   $_SESSION['hme_id']='';
   include('chat_select_historial_id.proc.php');
 }
-
 if(empty($rows)){
   header('location:espera.php');
 }
@@ -36,13 +35,14 @@ if(empty($rows)){
 
 </head>
 
-<div class="container">
-  <?php
-  include "includes/titulo.php";
-  ?>
-</div>
+
 
 <body background="img/login.jpg">
+  <div class="container">
+    <?php
+    include "includes/titulo.php";
+    ?>
+  </div>
   <div class="jumbotron" style="background:transparent !important">
 
       <!-- <h3>BULLYIN PRIMER CICLE</h3> -->
@@ -184,12 +184,12 @@ $( document ).ready(function() {
 
 </script>
 
-
-</body>
 <!-- Footer -->
 <?php
 include("footer.php");
 ?>
+</body>
+
 
 
 </html>

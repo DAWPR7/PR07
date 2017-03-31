@@ -7,12 +7,11 @@ $password=$_POST['password'];
 include("includes/conexion.proc.php");
 
 $proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$user_matricula' AND user_pwd = '$password'");
-	
-	
+
 
 	if(mysqli_num_rows($proceso)>0){
 
-		echo " LOGIN CORRECTO";
+		//echo " LOGIN CORRECTO";
 
 		// echo " DENTRO DE PROCESO  ";
 
@@ -34,7 +33,7 @@ $proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$
 			// ECHO "  hermano menor: ".$hma_id;
 
 			$proceso2= $conexion->query("SELECT hme_id FROM tbl_hmenor WHERE user_id='$user_id'");
-			
+
 			$resultado2 = mysqli_fetch_array($proceso2);
 
 			if (!empty($resultado2)){
@@ -63,7 +62,7 @@ $proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$
 				$psi_id=$resultado3['psi_id'];
 
 				$_SESSION['psico']=$psi_id;
-				
+
 				header("location: orientacion-full.php");
 			}
 
@@ -79,13 +78,11 @@ $proceso= $conexion->query("SELECT user_id FROM tbl_user WHERE user_matricula='$
 				header("location: administrador.php");
 			}
 		}
-	}else{
-
+	} else {
 
 		header("location: index.php?error=Usuario o contraseña erróneas");
 
-
 	}
-		
+
 
 ?>

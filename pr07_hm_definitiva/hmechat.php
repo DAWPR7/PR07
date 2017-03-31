@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-
+$titulo = "Hermano Menor";
 
 if (!isset($_SESSION['usuario'])) {
 

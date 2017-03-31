@@ -1,4 +1,7 @@
 <?php
+
+$titulo = "Administrador";
+
 session_start();
 include("includes/conexion.proc.php");
 

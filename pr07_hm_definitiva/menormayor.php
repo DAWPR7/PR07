@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-
+$titulo = "Hermano Mayor / Menor";
 
 if (!isset($_SESSION['usuario'])) {
 
@@ -36,9 +36,9 @@ if (!isset($_SESSION['usuario'])) {
 </head>
 <body background="img/login.jpg">
 <div class="container">
-<div class="row">
-   <div class=""><a href='index.php'><i class='fa fa-arrow-circle-left fa-3x' aria-hidden='true' title='Atrás'></i></a></br></div>
-</div>
+  <?php
+  include "includes/titulo.php";
+  ?>
 <div class="container" style="margin-top: 100px;">
 	<a href="hmechat.php"><div class="col-lg-4 col-lg-offset-1" style="border: 4px solid;
     border-radius: 25px; background-color: #eeece0; text-align: center">

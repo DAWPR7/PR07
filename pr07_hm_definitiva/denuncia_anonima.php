@@ -1,10 +1,7 @@
 <?php
 session_start();
 include("includes/conexion.proc.php");
-
-//if (!isset($_SESSION['admin'])) {
-//  header('location:index.php');
-//}
+$titulo = "Denuncia anónima";
 ?>
 <!DOCTYPE html>
 <html>
