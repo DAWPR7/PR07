@@ -15,6 +15,8 @@ if(empty($rows)){
   header('location:espera.php');
 }
 
+$titulo="Hermano Mayor";
+
 ?>
 
 <!DOCTYPE html>
@@ -36,12 +38,14 @@ if(empty($rows)){
     <!-- <script src="jsFunction/function.js"></script> -->
 
 </head>
-
-<div class="container">
+<?php
+  include('includes/titulo.php');
+?>
+<!-- <div class="container">
   <div class="page-header">
     <h1>HERMANO MAYOR</h1>      
   </div>    
-</div>
+</div> -->
 
 <body background="img/login.jpg">
   <div class="jumbotron" style="background:transparent !important">

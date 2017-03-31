@@ -15,6 +15,8 @@ if(empty($rows)){
   header('location:espera.php');
 }
 
+$titulo="Hermano Mayor";
+
 ?>
 
 <!DOCTYPE html>
@@ -37,11 +39,9 @@ if(empty($rows)){
 
 </head>
 
-<div class="page-header" style="margin-top: 0px;">
-    <div class="container">
-      <h1>HERMANO MAYOR</h1>  
-    </div>    
-  </div>
+<?php
+  include('includes/titulo.php');
+?>
 
 <body background="IMG/login.jpg">
   <div class="jumbotron" style="background:transparent !important">

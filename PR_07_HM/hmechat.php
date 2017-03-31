@@ -8,6 +8,7 @@ if (!isset($_SESSION['usuario'])) {
   include('chat_select_historial_id.proc.php');
 }
 
+$titulo="Hermano Menor";
 ?>
 
 <!DOCTYPE html>
@@ -28,21 +29,9 @@ if (!isset($_SESSION['usuario'])) {
     <!-- <script src="jsFunction/function.js"></script> -->
 
 </head>
-<div class="page-header" style="margin-top: 0px;">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="col-md-2 text-center" style="background-color: red;"> 
-        <a href='index.php'><i class='fa fa-arrow-circle-left fa-3x' aria-hidden='true' title='Atrás'></i></a>
-      </div>
-      <div  class="col-md-8 text-center">
-        <h1>HERMANO MENOR</h1>
-      </div>
-      <div class="col-md-2 text-center">
-        <a href='cerrar_sesion.php'> Cerrar Sesión</a></br>
-      </div>
-    </div>
-  </div>
-</div>
+<?php
+  include('includes/titulo.php');
+?>
 <!-- 
 
   <div class="page-header" style="margin-top: 0px;">
