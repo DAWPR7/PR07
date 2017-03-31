@@ -13,7 +13,7 @@
 
 <div class="container">
 <div class="row">
-   <div class=""><a href='index.php'><i class="fa fa-info-circle fa-3x" aria-hidden="true" title='Información'></i></a></br></div>
+   <div class=""><a href='info.php'><i class="fa fa-info-circle fa-3x" aria-hidden="true" title='Información'></i></a></br></div>
 </div>
 <div class="row" style="text-align: right;">
   <div class="col-md-offset-8"><a href="denuncia_anonima.php"><img src="IMG/button_anonima.png"></div></a>
