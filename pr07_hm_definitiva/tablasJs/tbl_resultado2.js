@@ -24,7 +24,7 @@ $('#curs').change(function() {
                         clickToSelect: false,
                         onLoadSuccess: function (data) {
                             if(data!=''){
-                                $('#h2').html("Resultats data: "+data[0]["fecha"]);
+                                $('#h2').html("Resultados fecha: "+data[0]["fecha"]);
                             }
                             
                         },

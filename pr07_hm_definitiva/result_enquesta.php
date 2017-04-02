@@ -1,5 +1,16 @@
+<?php
+session_start();
 
+$titulo = "Resultados encuesta";
 
+include("includes/conexion.proc.php");
+
+if (!isset($_SESSION['psico'])) {
+
+  header('location:index.php');
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,18 +46,19 @@
 
 </head>
 
+
+
+
+
+<body background="img/login.jpg">
 <div class="container">
   <div class="page-header">
-    <h1>RESULT ENQUESTAS BULLYIN</h1>
-  </div>
+        <h1><?php echo $titulo; ?><span class="pull-right">&nbsp;<a href='orientacion-full.php'><i class="fa fa-arrow-circle-left" aria-hidden="true" title='Atrás'></i></a>&nbsp;<a href="cerrar_sesion.php"><i class="fa fa-sign-out" aria-hidden="true" title='Desconectarse'></i></a></span></h1><br/>
+      </div>
 </div>
-
-
-
-<body >
   <div class="container" style="background-color: lightgrey;">
       <form class="navbar-form navbar-left" role="search">
-        <label>Seleccionar l'etapa:</label>
+        <label>Seleccionar la etapa:</label>
         <select class="form-control" name="etapa" id="etapa">
               <option selected disabled>ETAPA</option>
               <option >PRIMARIA</option>
@@ -54,17 +66,17 @@
               <option >CFGM</option>
               <option >CFGS</option>
         </select>
-        <label> Cicle formatiu:</label>
+        <label> Ciclo formativo:</label>
         <select class="form-control" name="cicle" id="cicle"  disabled>
-              <option selected disabled>CICLE FORMATIU</option>
+              <option selected disabled>CICLO FORMATIVO</option>
               <option >ASIX</option>
               <option >DAW</option>
               <option >OTROS</option>
               <option >CFGS</option>
         </select>
-        <label> Curs:</label>
+        <label> Curso:</label>
         <select class="form-control" name="curs" id="curs"  disabled>
-              <option selected disabled>CURS</option>
+              <option selected disabled>CURSO</option>
               <!-- <option value='1'>1</option>
               <option value='2'>2</option>
               <option value='3'>3</option>
@@ -81,15 +93,15 @@
     <form id="formSelect">
       <div class="row">
         <div class="col-md-4">
-            <h3 id="h0">Resultats data:</h3>
+            <h3 id="h0">Resultados fecha:</h3>
             <table id="tbl_resultado" data-group-by-field="proy_id" data-height="610" data-cookie="true" data-cookie-id-table="uno"  data-toolbar="#toolbar2"></table>
         </div>
         <div class="col-md-4">
-            <h3 id="h1">Resultats data:</h3>
+            <h3 id="h1">Resultados fecha:</h3>
             <table id="tbl_resultado1" data-group-by-field="proy_id" data-height="610" data-cookie="true" data-cookie-id-table="uno"  data-toolbar="#toolbar2"></table>
         </div>
         <div class="col-md-4">
-            <h3 id="h2">Resultats data:</h3>
+            <h3 id="h2">Resultados fecha:</h3>
             <table id="tbl_resultado2" data-group-by-field="proy_id" data-height="610" data-cookie="true" data-cookie-id-table="uno"  data-toolbar="#toolbar2"></table>
         </div>
     </div>
@@ -99,7 +111,10 @@
 
   </div>
 
-
+<!-- Footer -->
+<?php
+include("footer.php");
+?>
 
 </body>
 <!-- ENLACE A LAS TABLAS -->
@@ -113,9 +128,9 @@
     $('#etapa').change(function() {
 
 
-      var primaria  ="<option selected disabled>CURS</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>";
-      var eso       ="<option selected disabled>CURS</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>";
-      var cicle     ="<option selected disabled>CURS</option><option value='1'>1</option><option value='2'>2</option>";
+      var primaria  ="<option selected disabled>CURSO</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>";
+      var eso       ="<option selected disabled>CURSO</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>";
+      var cicle     ="<option selected disabled>CURSO</option><option value='1'>1</option><option value='2'>2</option>";
 
       var valor = $('#etapa').val();
       $('#curs').html('');
@@ -152,10 +167,7 @@
 
 
 
-<!-- Footer -->
-<?php
-include("footer.php");
-?>
+
 
 
 </html>

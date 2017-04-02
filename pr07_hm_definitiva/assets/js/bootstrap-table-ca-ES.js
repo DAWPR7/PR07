@@ -19,7 +19,7 @@
             return 'Buscar';
         },
         formatNoMatches: function () {
-            return 'No se han encotrado registros';
+            return 'No se han encontrado registros';
         }
     });
 })(jQuery);
