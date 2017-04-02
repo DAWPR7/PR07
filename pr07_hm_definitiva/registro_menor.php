@@ -27,7 +27,7 @@
 	               	<input type="password" name="password2" id="inputPassword" class="form-control" placeholder=" Confirmar contraseña" required>
 	               	<div class="form-group">
                 <label for="comment">¿Por qué quieres ser Hermano Menor?</label>
-                <textarea name="notas" class="form-control" rows="5" id="comment" placeholder="Una pequeña explicacón..."></textarea>
+                <textarea name="notas" class="form-control" rows="5" id="comment" placeholder="Una pequeña explicacón..." required></textarea>
                 </div>
 	                <button class="btn-primary btn btn-danger" type="submit" onClick="return comprobarClave()">Confirmar</button>
 	            <p class="form-group">Al continuar confirmas que has leído y que estás de acuerdo con las <a href="condiciones_uso.php">Condiciones de uso</a> y <a href="politica_privacidad.php">Política de privacidad</a>.</p>
