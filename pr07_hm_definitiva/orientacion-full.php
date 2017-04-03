@@ -95,7 +95,7 @@ if (!isset($_SESSION['psico'])) {
                                                   <td>". $sh_ph['user_matricula']."</td>
                                                   <td>".$sh_ph['hme_notas']."</td>
                                                   <td><a class='btn mini blue-stripe' href='ap_solicitud.proc.php?id=".$sh_ph['hme_id']."'>Aprobar</a></td>
-                                                  <td><a class='btn mini blue-stripe' role='button' href='#'>Eliminar</a></td>
+                                                  <td><a class='btn mini blue-stripe' role='button' href='rm_solicitud.proc.php?id=".$sh_ph['hme_id']."'>Eliminar</a></td>
                                               </tr>
                                           </tbody>
                                       </table>";
