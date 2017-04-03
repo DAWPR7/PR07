@@ -40,7 +40,7 @@
                             sortable: true,
                             visible: true,
                         },{
-                            field: 'his_comentario',
+                            field: 'hme_notas',
                             title: 'Notas',
                             align: 'center',
                             valign: 'middle',

@@ -282,12 +282,12 @@ if (!isset($_SESSION['psico'])) {
       </div>
       <div class="modal-body">
         <div class="row">
-          <form action="" method="GET" id="formModal">
+          <form action="ch_note_hmenor.proc.php" method="GET" id="formModal">
           <input type="hidden" id="forHmid" name="forHmid" />
 
           <div class="form-group col-md-12">
               <label for="hmenor">Notas Hermano Menor</label>
-              <textarea class="form-control" id="textareaModal" rows="15"></textarea>
+              <textarea class="form-control" id="textareaModal" name="textareaModal" rows="15"></textarea>
           </div>
           <div class="form-group col-md-12">
               <button type="submit" class="btn btn-primary">Añadir</button>
