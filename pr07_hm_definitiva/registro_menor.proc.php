@@ -15,6 +15,7 @@ $resultado1= $conexion->query($query1);
 
 $last_id = mysqli_insert_id($conexion);
 
+//echo $last_id;
 
 
 $query2="INSERT INTO tbl_hmenor(user_id, hme_notas, hme_estado) VALUES('$last_id','$notas', 'pendiente') ";

@@ -83,11 +83,11 @@ if (!isset($_SESSION['psico'])) {
 
                                   echo "<table class='table'>";
                                   echo "<thead>
-                                              <tr>
-                                                  <th>Matrícula</th>
-                                                  <th>Motivo</th>
-                                                  <th>¿Aprobar?</th>
-                                                  <th>¿Eliminar?</th>
+                                              <tr class=''>
+                                                  <th class='col-md-3'>Matrícula</th>
+                                                  <th class='col-md-3'> Motivo</th>
+                                                  <th class='col-md-3'>¿Aprobar?</th>
+                                                  <th class='col-md-3'>¿Eliminar?</th>
                                               </tr>
                                           </thead>
                                           <tbody>
@@ -235,12 +235,19 @@ if (!isset($_SESSION['psico'])) {
                                 <!-- <button type="submit" class="btn btn-primary" id="mostrar_seguimiento">Seleccionar</button> -->
                               </div>
                               </form>
-                               <form action="upd_notes.proc.php" method="POST">
+                              <form action="upd_notes.proc.php" method="POST">
+                              <input type="hidden" id="hmeid" name="hmeid" />
+                              <div class="form-group col-md-8">
+                                <label for="hmenor">Notas:</label>
+                                <textarea class="form-control" id="notas" rows="5"></textarea>
+                                <br/>
+                                <input type="submit" class="btn btn-secondary" value="añadir nota" />
+                              </div>
                                   <div class="form-group col-md-12">
-                                      <input type="hidden" id="hmeid" name="hmeid" />
-                                      <input type="text" id="notas" name="notas"/>
-                                      <br/>
-                                      <input type="submit" class="btn btn-secondary" value="añadir nota" />
+                                      
+                                      <!-- <input type="text" id="notas" name="notas"/> -->
+                                      
+                                      
                                   </div>
                                </form>
                               <div class="form-group col-md-12" id="div_oculto">
@@ -262,6 +269,44 @@ if (!isset($_SESSION['psico'])) {
   <?php
     // require_once("footer.php");
   ?>
+<!-- VENTANA MODAL COMENTARIO -->
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <form action="" method="GET" id="formModal">
+          <input type="hidden" id="forHmid" name="forHmid" />
+
+          <div class="form-group col-md-12">
+              <label for="hmenor">Notas Hermano Menor</label>
+              <textarea class="form-control" id="textareaModal" rows="15"></textarea>
+          </div>
+          <div class="form-group col-md-12">
+              <button type="submit" class="btn btn-primary">Añadir</button>
+          </div>
+          </form>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
 
   <!-- BOTON ABRIR MODAL -->
   <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Seleccionar</button> -->
@@ -300,6 +345,31 @@ if (!isset($_SESSION['psico'])) {
 <script src="assets/js/login.js"></script> -->
 
 <script type="text/javascript">
+
+$('#tbl_terapias').on('dbl-click-row.bs.table', function (event, row, $element) {
+
+  $('#myModal').modal('show');
+  $('#myModal').on('shown.bs.modal', function (event) {
+      
+      $('#textareaModal').val(row.his_comentario);
+      $('#forHmid').val(row.hme_id);
+
+
+  })
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 $("#select_hmenor").change(function(){
               hme_id = $("#select_hmenor").val();
               $.ajax({
@@ -336,6 +406,7 @@ $("#select_hmenor").change(function(){
 
 <!-- VALIDACIONES AÑADIR HERMANO MAYOR -->
 <script type="text/javascript">
+
   function val_addhmayor() {
     var error="";
     if(document.getElementById('hm_mat').value=="") {

@@ -26,5 +26,10 @@ $selectHistorial = $databaseConnection->prepare("SELECT his_id FROM tbl_historia
 
               	$rows=$selectHistorial->fetchColumn();
 
+if (!$rows) {
+	echo "redireccion";
+
+}
+
 
 ?>
