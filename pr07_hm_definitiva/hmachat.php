@@ -97,6 +97,9 @@ if(empty($rows)){
 
 <script type="text/javascript">
 
+$('#contenido').scrollTop($('#contenido')[0].scrollHeight);
+
+
 $("#mandar_chat").click(function(){
               $.ajax({
                    type: "POST",
@@ -138,6 +141,9 @@ $( document ).ready(function() {
                           var div='<div class="col-md-7"><div class="panel panel-info"><div class="panel-heading">H.Mayor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
                           $('#contenido').prepend(div);
                         }
+
+                        $('#contenido').scrollTop($('#contenido')[0].scrollHeight);
+                        
                       }
 
 

@@ -1,18 +1,20 @@
 
 <?php
-// include_once "includes/conexion_bd.php";
-include "includes/conexion_bd.php";
+include_once "includes/conexion_bd.php";
+// include "includes/conexion_bd.php";
 
 // echo 'HMA '. $_SESSION['hma_id'];
 
 // echo 'HME '. $_SESSION['hme_id'];
 
-if (!empty($_SESSION['hma_id'])) {
+if (!empty($hmenor_ini)) {
 
-	$sentencia= 'hma_id='.$_SESSION['hma_id'];
+	$sentencia= 'hme_id='.$hmenor_ini;
+	// echo $sentencia;
 
 }else{
-	$sentencia= 'hme_id='.$_SESSION['hme_id'];
+	$sentencia= 'hma_id='.$hmayor_ini;
+	// echo $sentencia;
 }
 
 // echo $sentencia;

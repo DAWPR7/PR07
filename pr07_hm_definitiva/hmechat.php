@@ -6,8 +6,8 @@ $titulo="Hermano Menor";
 if (!isset($_SESSION['usuario'])) {
   header('location:index.php');
 } else {
-  $hmayor_ini='';
-  $hmenor_ini=$_SESSION['hme_id'];
+    $hmayor_ini='';
+    $hmenor_ini=$_SESSION['hme_id'];
   include('chat_select_historial_id.proc.php');
 }
 
@@ -95,6 +95,8 @@ if(empty($rows)){
 
 <script type="text/javascript">
 
+
+
 $("#mandar_chat").click(function(){
               $.ajax({
                    type: "POST",
@@ -131,11 +133,14 @@ $( document ).ready(function() {
                         if(tipo!='h_me'){
 
                           var div='<div class="col-md-7 col-md-offset-5"><div class="panel panel-default"><div class="panel-heading">H.Mayor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
-                          $('#contenido').prepend(div);
+                          $('#contenido').append(div);
                         }else{
                           var div='<div class="col-md-7"><div class="panel panel-info"><div class="panel-heading">H.Menor -'+fecha+'<div>'+mensaje+'</div></div></div></div>';
-                          $('#contenido').prepend(div);
+                          $('#contenido').append(div);
                         }
+
+                        $('#contenido').scrollTop($('#contenido')[0].scrollHeight);
+                        
                       }
 
 
