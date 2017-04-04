@@ -42,7 +42,7 @@ if(empty($rows)){
   </div>    
 </div>
 
-<body background="IMG/login.jpg">
+<body  background="IMG/login.jpg">
   <div class="jumbotron" style="background:transparent !important">
 
       <!-- <h3>BULLYIN PRIMER CICLE</h3> -->
