@@ -29,6 +29,7 @@ $titulo = "Gracias! :)";
 <body background="img/login.jpg">
 
     <div class="container">
+    
           <?php
           include "includes/titulo.php";
           ?>
